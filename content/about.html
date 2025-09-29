@@ -1,0 +1,126 @@
+<!-- content/about.html -->
+<header>
+  <h1>Tornado Alley Shifting East</h1>
+  <p class="lead"><em>A GIS-Driven Analysis With an Interactive Web Application</em></p>
+</header>
+
+<hr>
+
+<nav class="toc" aria-label="Table of contents">
+  <strong>Contents:</strong>
+  <ol>
+    <li><a href="#preface">Preface</a></li>
+    <li><a href="#intro">Introduction / Abstract</a></li>
+    <li><a href="#background">Background</a></li>
+    <li><a href="#research-questions">Research Questions</a></li>
+    <li><a href="#methods">Methods</a>
+      <ol>
+        <li><a href="#methods-data">Data Collection and Database Design</a></li>
+        <li><a href="#methods-cleaning">Data Cleaning and Coding</a></li>
+        <li><a href="#methods-stats">Statistical Analysis</a></li>
+        <li><a href="#methods-gis">GIS Visualization</a></li>
+        <li><a href="#methods-web">Web Development</a></li>
+      </ol>
+    </li>
+    <li><a href="#significance">Significance</a></li>
+    <li><a href="#timeline">Timeline</a></li>
+    <li><a href="#references">References (placeholders)</a></li>
+  </ol>
+</nav>
+
+<section id="preface">
+  <h2>Preface</h2>
+  <p>In preparing this proposal, I have followed the recommended structure from the video provided and aimed for a length of approximately 2,000–2,500 words. My goal is to present an ambitious yet realistic project plan that highlights core applied computing skills in coding, database management, statistics, and GIS (which align closely with my career path). Although GIS is not the central focus of this degree, I believe any project that can also strengthen my professional portfolio should be taken to its fullest. I have outlined a detailed methodology; however, I recognize that certain elements may need to be adjusted as the project progresses, depending on the availability, time, and quality of the data. I have intentionally included as much methodological detail as possible at this stage to establish a strong foundation, while remaining flexible to refine the scope as the project unfolds.</p>
+</section>
+
+<section id="intro">
+  <h2>Introduction / Abstract</h2>
+  <p>This project will analyze whether Tornado Alley, which has historically been centered in the Plains states, has shifted eastward over the past 75 years. I will utilize NOAA’s Storm Events Database, covering the years 1950–2024, and process tornado event data to examine spatial and temporal trends in frequency, intensity, and location. The project may also incorporate demographic and infrastructure data to assess which communities face the most significant risk. While initially going to present an Esri StoryMap presentation, this project will instead culminate in a custom interactive web application built with Mapbox, allowing users to explore tornado density maps, toggle between decades, and view vulnerability overlays. This project would then demonstrate the integration of GIS analysis with applied computing skills in coding, database management, and statistical modeling.</p>
+</section>
+
+<section id="background">
+  <h2>Background</h2>
+  <p>Growing up in Southern California, tornadoes were never a part of my reality. However, after living in the Midwest, I quickly realized how central they are to everyday risk, preparedness, and even culture. Historically, the region most associated with tornado activity has been “Tornado Alley,” which is a stretch of the central United States from Texas through Oklahoma, Kansas, and into Nebraska. Even growing up in California, I had heard of this infamous region and its reputation. For decades, this region has held the highest concentration of tornado reports, fueled by unique atmospheric conditions that occur when dry air from the Rockies collides with moist air from the Gulf of Mexico (Schultz, 2024).</p>
+  <p>In recent years, however, researchers have begun to question whether Tornado Alley is shifting eastward. During my four years living in Arkansas, I have personally witnessed an increase in severe storms and tornado activity. Each year seems to bring stronger events, with 2024 in particular causing significant damage to the homes and property of people I know. At the same time, reports of tornadoes occurring in states not traditionally associated with Tornado Alley suggest that these storms may be spreading beyond their “historical boundaries”. A growing body of evidence suggests that the Southeast, often called “Dixie Alley,” is experiencing a rise in tornado frequency and intensity. States such as Mississippi, Alabama, and Tennessee have seen clusters of high-impact tornadoes, including EF4 and EF5 events, that rival or exceed those in the traditional Plains region. Unlike the relatively flat terrain of the Plains, the Southeast presents additional challenges, such as heavily forested areas, higher nighttime tornado frequency, and more mobile home communities, which are factors that increase both exposure and vulnerability.</p>
+  <p>The scientific debate about whether Tornado Alley is moving East highlights the complexity of measuring tornado trends. Improvements in storm reporting and population growth mean that more tornadoes are now documented than in the 1950s, so simple frequency counts cannot always be taken at face value. To address this, researchers have increasingly relied on intensity-weighted analyses, kernel density mapping, and decadal trend comparisons. Studies like those by Gensini and Brooks (2018): “Spatial Trends in United States tornado frequency”, show a statistically significant eastward shift in tornado activity, but there remains disagreement on the magnitude and drivers of this trend. Some argue that climate variability and warming temperatures may be altering storm environments, while others point to changes in reporting practices or population distribution as confounding factors. Both, I feel, can be valid.</p>
+  <p>At the same time, the human dimension of tornado risk is receiving more attention. Tornadoes in the Southeast are often deadlier, not necessarily because they are stronger, but because of where and when they occur. More tornadoes strike at night, when people are asleep and less likely to receive warnings. Higher population density and a larger proportion of mobile homes mean more lives and property are at risk when storms do occur. Infrastructure challenges, such as limited storm shelters and fewer hospitals in rural areas, also contribute to greater vulnerability in Dixie Alley compared to the central Plains. Working with building networks for rural communities in Arkansas has opened my eyes to just how dangerous tornadoes could actually be for these communities.</p>
+  <p>This project builds on these discussions by integrating both climatological and social perspectives into a single output. By analyzing seven decades of NOAA tornado records, I will identify where hotspots have persisted, where they may be shifting, and how intensity has varied across time. In addition, by linking tornado data with demographic and infrastructure datasets, I aim to identify the communities most vulnerable to changing risk. Rather than a traditional report or journal article, this project will deliver its results through an interactive web-based application, integrating outputs from my GIS analyses and presenting the findings in a format that is accessible to a broad audience.</p>
+</section>
+
+<section id="research-questions">
+  <h2>Research Questions</h2>
+  <p>Some questions I aim to answer during this project are as follows:</p>
+  <ul>
+    <li>Has Tornado Alley shifted eastward between 1950 and 2024?</li>
+    <li>Which decades saw the most frequent and intense tornado activity?</li>
+    <li>How does tornado risk intersect with vulnerable communities and infrastructure?</li>
+    <li>If current trends continue, what might future tornado hotspots look like?</li>
+  </ul>
+</section>
+
+<section id="methods">
+  <h2>Methods</h2>
+
+  <section id="methods-data">
+    <h3>i. Data Collection and Database Design</h3>
+    <p>The foundation of this project is the NOAA Storm Events Database, which contains detailed records of every documented tornado in the United States from 1950 through 2024. Each record includes attributes such as the date, location, F/EF scale rating, number of fatalities and injuries, and reported property damage. These raw records, while extensive, require careful structuring to support long-term trend analysis. To accomplish this, I will design a relational database that organizes the tornado data by event ID, year, decade, and location. Additional tables will be linked to integrate U.S. Census demographic data (population density, housing characteristics, income levels) and Esri’s use of Living Atlas to include hospitals, schools, and emergency services. This design allows tornado events to be analyzed not only in isolation but also in relation to the communities they affect. By building a normalized structure, the database will support efficient definition querying, filtering, and exporting of subsets for both GIS visualization and statistical analysis.</p>
+  </section>
+
+  <section id="methods-cleaning">
+    <h3>ii. Data Cleaning and Coding</h3>
+    <p>The NOAA Storm Events Database, while extensive, contains inconsistencies due to changes in data collection methods over time. For example, tornado intensity ratings shifted from the original Fujita (F) scale to the Enhanced Fujita (EF) scale in 2007 (Hallenbeck, 2024), and reporting density has increased with population growth and improved radar technology. To address these challenges, I will likely utilize Python scripts to standardize attributes across decades, ensuring consistent classification of storm intensity and damage. SQL and definition queries will be used to enforce data integrity within the relational database, including the handling of null values, duplicate records, and geographic errors. By doing this, if there are errors within the data, I can understand how to shape my analysis. Additional calculated fields will be created, such as decade classifications, damage-per-capita measures, and an “intensity weight” variable that can be applied in kernel density analysis. By automating this data cleaning process, I ensure better accuracy for long-term and dynamic analysis.</p>
+  </section>
+
+  <section id="methods-stats">
+    <h3>iii. Statistical Analysis</h3>
+    <p>Once the data is cleaned and structured, I will apply a series of statistical techniques to measure tornado patterns and test for significant changes over time. Basic frequency counts will show how the number of tornadoes per decade has changed, while intensity-weighted measures will highlight whether severe storms are becoming more common in particular regions. Some statistical analyses I plan to explore include: Kernel Density Estimation (KDE) to reveal where the strongest tornadoes are concentrated. Centroid shift analysis is to be used to detect whether the geographic “center of mass” of tornado activity has moved eastward across decades. Regression models will also be applied to test for correlations between tornado frequency/intensity and climate indicators, such as annual average temperature, precipitation, or drought indices (PDSI). Finally, linear trendlines will be created to offer straightforward projections of how tornado activity might evolve in future decades if current patterns continue.</p>
+  </section>
+
+  <section id="methods-gis">
+    <h3>iv. GIS Visualization</h3>
+    <p>All statistical results from this project will be paired with GIS visualizations in ArcGIS Pro. I will create decade-by-decade tornado density maps and apply consistent color ramps to make comparisons clear and easy. Intensity-weighted density maps will also be produced, giving a more accurate picture of where the strongest tornadoes are clustering compared to basic frequency maps. To connect these patterns to human impact, I will overlay demographic data such as population density, poverty levels, and mobile home prevalence. Infrastructure layers, including hospitals, schools, and emergency shelters, will also be added to evaluate community preparedness. These visualizations will serve as both standalone outputs and as datasets for integration into the final interactive web application.</p>
+  </section>
+
+  <section id="methods-web">
+    <h3>v. Web Development</h3>
+    <p>The final stage of the methods will be the development of a custom interactive web application using Mapbox or Leaflet. While initially planning to utilize ArcGIS StoryMaps, a custom web app provides more flexibility and demonstrates stronger applied computing skills. The web application aims to allow users to toggle between decades, filter tornadoes by EF rating, and overlay demographic or infrastructure data. Charts displaying decadal trends and hotspot centroid movements will be embedded into the interface. Outputs from ArcGIS Pro will be exported as GeoJSON or tiles and integrated into the web environment. This hybrid workflow will let me take advantage of ArcGIS Pro’s analysis tools while also using modern web mapping frameworks to make the results interactive and easy for people to explore online.</p>
+  </section>
+</section>
+
+<section id="significance">
+  <h2>Significance</h2>
+  <p>Tornadoes are one of the most damaging natural hazards in the United States, leading to hundreds of deaths and billions of dollars in losses every year. If Tornado Alley is shifting eastward, it raises serious concerns for emergency planning, infrastructure, and communities in the Southeast. States like Mississippi, Alabama, and Tennessee already deal with added risks, such as higher numbers of mobile homes and fewer emergency shelters, which make people more vulnerable when severe weather strikes. The significance of this project is not just in studying whether tornado patterns are changing, but also in showing how technology can help connect research with real-world needs. By combining GIS analysis with statistical methods and presenting the results in an interactive web application, this project aims to make the findings accessible while also demonstrating key applied computing skills. It brings together coding, database management, statistics, and GIS visualization skills that are central to my degree and valuable for my portfolio and career as a GIS analyst.</p>
+</section>
+
+<section id="timeline">
+  <h2>Timeline</h2>
+  <p>The project will be developed in several phases across the semester. I have already obtained and cleaned the NOAA tornado data and compiled into a master table. I am going to be finalizing a Python script for data clean-up this week. While obtaining sources for the Bibliography, I plan to begin analysis, which will be conducted to measure tornado frequency, intensity, and hotspot shifts, followed by GIS visualization in ArcGIS Pro to produce density rasters and vulnerability overlays. While I formalize my abstract based on my analysis in ArcPro, I will transition into web development, where these outputs will be integrated into an interactive Mapbox application. I want to give myself enough time with the web application, as my coding is not as strong as my GIS. This timeline helps ensure that each component of the project, from data preparation to web deployment, is addressed systematically and within the timeframe of the capstone.</p>
+</section>
+
+<section id="references">
+  <h2>References (placeholders)</h2>
+  <ul>
+    <li>Gensini, V., &amp; Brooks, H. (2018). <em>Spatial trends in United States tornado frequency</em>. <span class="muted">[Add full publication details]</span></li>
+    <li>Schultz (2024). <em>[Title related to Tornado Alley/atmospheric conditions]</em>. <span class="muted">[Add full publication details]</span></li>
+    <li>Hallenbeck (2024). <em>[EF scale transition / data considerations]</em>. <span class="muted">[Add full publication details]</span></li>
+  </ul>
+  <p class="muted">Note: Replace placeholders above with full citations (authors, year, title, journal/publisher, DOI/URL as appropriate).</p>
+</section>
+
+<style>
+  /* Gentle, drawer-friendly typography */
+  .about h1 { font-size: 1.4rem; margin: 0 0 .35rem; }
+  .about .lead { color: #444; margin: 0 0 .5rem; }
+  .about hr { border: 0; border-top: 1px solid #e5e7eb; margin: .5rem 0 .75rem; }
+  .about h2 { font-size: 1.05rem; margin: .9rem 0 .35rem; }
+  .about h3 { font-size: .95rem; margin: .6rem 0 .25rem; }
+  .about p { margin: .35rem 0; line-height: 1.45; color: #111; }
+  .about ul, .about ol { margin: .35rem 0 .6rem 1.1rem; }
+  .about .muted { color: #6b7280; }
+
+  /* Compact TOC */
+  .about .toc { font-size: .9rem; margin-bottom: .5rem; }
+  .about .toc ol { margin: .25rem 0 .5rem 1.1rem; }
+  .about .toc a { text-decoration: none; border-bottom: 1px dotted #aaa; }
+  .about .toc a:hover { border-bottom-style: solid; }
+</style>
