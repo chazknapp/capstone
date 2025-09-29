@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tornado Shift — Mapbook</title>
+
+  <!-- Esri ArcGIS JS API -->
+  <link rel="stylesheet" href="https://js.arcgis.com/4.29/esri/themes/light/main.css" />
+  <script src="https://js.arcgis.com/4.29/"></script>
+
+  <!-- Your site styles -->
+  <link rel="stylesheet" href="site.css" />
+  <style>
+    /* Tabs left, controls right */
+    #topbar{ display:flex; align-items:center; gap:.75rem; justify-content:space-between }
+    .mode-tabs{ display:flex; gap:.5rem }
+    .global-controls{ display:flex; align-items:center; gap:.6rem; margin-left:auto }
+    .global-controls label{ font-size:.9rem; white-space:nowrap }
+    .global-controls input[type="range"]{ width:140px }
+    #decadeB:disabled { opacity:0.5 }
+  </style>
+</head>
+<body>
+
+  <!-- Landing / Home -->
+  <section id="home" class="view active">
+    <div class="home-card">
+      <h1>Tornado Shift</h1>
+      <p class="intro">
+        A clean, interactive mapbook exploring how U.S. tornado activity has shifted.
+        Browse kernel density (KDE), tessellation aggregation, and symbolized points by decade.
+      </p>
+      <img id="home-hero" alt="Hero" src="images/frontpage.png"/>
+      <button id="btnExplore" class="btn-primary">Explore</button>
+    </div>
+  </section>
+
+  <!-- Map View -->
+  <section id="mapview" class="view">
+    <!-- Header -->
+    <header id="topbar">
+      <!-- LEFT: map modes -->
+      <nav class="mode-tabs">
+        <button class="tab" data-mode="KDE">KDE</button>
+        <button class="tab" data-mode="TES">Tessellation</button>
+        <button class="tab" data-mode="PTS">Points</button>
+        <button id="btnClear" class="btn-clear" type="button">Clear</button>
+      </nav>
+
+      <!-- CENTER: decades (A/B) -->
+      <div class="decade-controls">
+        <label>A
+          <select id="decadeA"></select>
+        </label>
+        <span class="sep">↔</span>
+        <label>B
+          <select id="decadeB" disabled></select>
+        </label>
+      </div>
+
+      <!-- RIGHT: tools -->
+      <div class="tool-controls">
+        <label>Opacity
+          <input id="opacity" type="range" min="0" max="1" step="0.01" value="0.9">
+        </label>
+        <label><input id="chkSwipe" type="checkbox"> Swipe</label>
+        <label><input id="chkCentroids" type="checkbox"> Centroids</label>
+        <label><input id="chkCentroidPath" type="checkbox"> Path</label>
+      </div>
+    </header>
+
+
+    <!-- Map Containers -->
+    <div id="compare" class="compare" style="display:none">
+      <div id="mapLeft" class="map"></div>
+      <div id="mapRight" class="map"></div>
+    </div>
+    <div id="singleMap" class="map"></div>
+
+    <!-- Footer -->
+    <footer id="bottombar">
+      <button id="btnStats" class="link">Stats</button>
+      <button id="btnAbout" class="link">About</button>
+    </footer>
+
+    <!-- Drawer -->
+    <section id="drawer" class="drawer">
+      <div class="drawer-tabs">
+        <button data-pane="statsPane" class="active">Stats</button>
+        <button data-pane="aboutPane">About</button>
+      </div>
+      <div class="drawer-body">
+        <div id="statsPane" class="pane active">
+          <div class="cards one-line">
+            <!-- 5 graphs -->
+            <div class="card" data-type="graph" data-src="stats/graphs/tor_counts_decade_region.png" data-caption="Counts by Decade &amp; Region"></div>
+            <div class="card" data-type="graph" data-src="stats/graphs/tor_ef_decade.png" data-caption="EF Distribution by Decade"></div>
+            <div class="card" data-type="graph" data-src="stats/graphs/tor_casualties.png" data-caption="Casualties Over Time"></div>
+            <div class="card" data-type="graph" data-src="stats/graphs/seasons_bar_chart.png" data-caption="Seasonality Shifts"></div>
+            <div class="card" data-type="graph" data-src="stats/graphs/tor_regression.png" data-caption="Regression Trends"></div>
+
+            <!-- 3 tables -->
+            <div class="card" data-type="table" data-src="stats/tables/decade_summary.html" data-caption="Decade Summary (Table)"></div>
+            <div class="card" data-type="table" data-src="stats/tables/regional_totals.html" data-caption="Regional Totals (Table)"></div>
+            <div class="card" data-type="table" data-src="stats/tables/regression_summary.html" data-caption="Regression Summary (Table)"></div>
+          </div>
+        </div>
+
+        <div id="aboutPane" class="pane">
+          <article class="about">
+            <h2>About this project</h2>
+            <p>
+              Map symbology is authored in ArcGIS Pro and preserved by publishing decade-based layers to ArcGIS Online.
+              KDE, Tessellation, and Points are drawn from Esri services.
+            </p>
+          </article>
+        </div>
+      </div>
+      <button id="drawerClose" class="drawer-close">×</button>
+    </section>
+  </section>
+
+  <!-- Scripts -->
+  <script src="scripts/site.js"></script>
+  <script src="scripts/app_esri_only.js"></script>
+  <script src="scripts/stats_loader.js"></script>
+
+  <!-- Fallback: Explore button -->
+  <script>
+    document.getElementById('btnExplore')?.addEventListener('click', async () => {
+      try {
+        document.getElementById('home').classList.remove('active');
+        document.getElementById('mapview').classList.add('active');
+        if (window.EsriApp?.init) await window.EsriApp.init();
+      } catch (e) {
+        console.error('Explore failed:', e);
+        alert('Map failed to start: ' + (e?.message || e));
+      }
+    });
+
+    // Disable Decade B unless swipe is checked
+    const chkSwipe = document.getElementById('chkSwipe');
+    const decadeB = document.getElementById('decadeB');
+    chkSwipe?.addEventListener('change', () => {
+      if (chkSwipe.checked) {
+        decadeB.disabled = false;
+      } else {
+        decadeB.value = "";
+        decadeB.disabled = true;
+        if (window.EsriApp?.setDecadeB) window.EsriApp.setDecadeB(""); // clears B layer
+      }
+    });
+  </script>
+</body>
+</html>

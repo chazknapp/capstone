@@ -1,0 +1,299 @@
+:root{
+  --bg:#ffffff;
+  --text:#111;
+  --muted:#6b7280;
+  --accent:#111;
+  --panel:#f5f6f7;
+  --border:#e5e7eb;
+}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text)}
+.view{display:none;height:100%}
+.view.active{display:block}
+.home-card{max-width:720px;margin:6rem auto 0 auto;padding:0 1rem;text-align:center}
+.home-card h1{font-size:2.2rem;margin:0 0 .5rem 0}
+.home-card .intro{color:var(--muted);line-height:1.5;margin-bottom:1rem}
+#home-hero{width:100%;border-radius:8px;border:1px solid var(--border);margin:1rem 0}
+.btn-primary{background:var(--accent);color:#fff;border:none;border-radius:6px;padding:.75rem 1.1rem;font-weight:600;cursor:pointer}
+#topbar{position:fixed;top:0;left:0;right:0;height:52px;background:#fff;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:1rem;padding:0 1rem;z-index:10}
+.mode-tabs .tab{background:transparent;border:none;padding:.5rem .75rem;font-weight:600;cursor:pointer;border-bottom:2px solid transparent}
+.mode-tabs .tab.active{border-bottom-color:#000}
+.controls{display:flex;align-items:center;gap:.5rem}
+.map{position:absolute;top:52px;bottom:36px;width:100%}
+.compare{position:absolute;top:52px;bottom:36px;left:0;right:0}
+#singleMap{position:absolute;top:52px;bottom:36px;left:0;right:0}
+#bottombar{position:fixed;bottom:0;left:0;right:0;height:36px;background:#fff;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:flex-end;gap:.5rem;z-index:10}
+.drawer{position:fixed;left:0;right:0;bottom:-60vh;height:60vh;background:#fff;border-top:1px solid var(--border);transition:bottom .25s ease;z-index:20}
+.drawer.open{bottom:36px}
+.drawer-tabs{display:flex;gap:.5rem;border-bottom:1px solid var(--border);padding:.5rem}
+.drawer-tabs button{background:transparent;border:none;padding:.4rem .6rem;cursor:pointer;border-bottom:2px solid transparent}
+.drawer-tabs button.active{border-bottom-color:#000}
+.drawer .drawer-body{padding:.75rem;overflow:auto;height:calc(60vh - 72px)}
+.pane{display:none}
+.pane.active{display:block}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:.75rem}
+.card{border:1px solid var(--border);border-radius:6px;background:var(--panel);padding:.5rem;cursor:pointer;min-height:140px;display:flex;align-items:center;justify-content:center;text-align:center}
+.card:hover{background:#eef2ff}
+.drawer-close{position:absolute;right:8px;top:6px;border:none;background:transparent;font-size:24px;cursor:pointer}
+
+/* FORCE both map containers to be full-viewport */
+.compare,
+#singleMap {
+  position: fixed !important;   /* override .map absolute */
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 0;
+}
+
+/* Optional: click-safe gutters so header/footer don't pass clicks to map */
+.compare::before, #singleMap::before {
+  content: ""; position: absolute; top: 0; left: 0; right: 0; height: 52px; pointer-events: none;
+}
+.compare::after, #singleMap::after {
+  content: ""; position: absolute; bottom: 0; left: 0; right: 0; height: 36px; pointer-events: none;
+}
+
+/* --- Topbar 3-zone layout --- */
+#topbar{
+  display:grid;
+  grid-template-columns: 1fr auto 1fr;     /* left | center | right */
+  align-items:center;
+  gap:.75rem;
+}
+.mode-tabs{ justify-self:start; display:flex; gap:.5rem }
+.decade-controls{ justify-self:center; display:flex; align-items:center; gap:.5rem }
+.decade-controls label{ font-size:.9rem; white-space:nowrap }
+.decade-controls .sep{ color:#999; font-size:.9rem }
+.tool-controls{ justify-self:end; display:flex; align-items:center; gap:.6rem }
+.tool-controls label{ font-size:.9rem; white-space:nowrap }
+#decadeB:disabled{ opacity:.5 }
+
+/* --- Compact, black range slider (WebKit + Firefox) --- */
+#opacity{
+  width:120px;                 /* smaller */
+  appearance:none;
+  background:transparent;
+  height:18px;                 /* control box height */
+  padding:0; margin:0;
+}
+
+/* Track */
+#opacity::-webkit-slider-runnable-track{
+  height:3px; background:#111; border-radius:2px;
+}
+#opacity::-moz-range-track{
+  height:3px; background:#111; border-radius:2px;
+}
+
+/* Thumb */
+#opacity::-webkit-slider-thumb{
+  appearance:none;
+  width:14px; height:14px; border-radius:50%;
+  background:#111; border:1px solid #111; margin-top:-5.5px; /* centers on 3px track */
+}
+#opacity::-moz-range-thumb{
+  width:14px; height:14px; border-radius:50%;
+  background:#111; border:1px solid #111;
+}
+
+/* Focus ring (optional) */
+#opacity:focus-visible{ outline:2px solid #111; outline-offset:2px }
+
+.mode-tabs .btn-clear{
+  background: transparent;
+  border: none;
+  font-weight: 400;         /* not bold */
+  color: #6b7280;           /* muted gray */
+  padding: .5rem .5rem;
+  cursor: pointer;
+}
+.mode-tabs .btn-clear:hover{
+  color: #111;
+  text-decoration: underline;
+}
+
+
+/* Lightbox gallery */
+.lb-wrap{
+  position:fixed; inset:0; background:rgba(0,0,0,0.5);
+  z-index: 30; display:flex; align-items:center; justify-content:center;
+}
+.lb-body{
+  background:#fff; border-radius:10px; max-width:95vw; max-height:90vh;
+  padding:10px; overflow:auto; box-shadow:0 10px 30px rgba(0,0,0,.2);
+}
+.lb-header{ display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; }
+.lb-header .lb-back, .lb-header .lb-close{
+  background:#111; color:#fff; border:none; border-radius:6px; padding:.35rem .6rem; cursor:pointer;
+}
+.lb-content{ text-align:center; margin-bottom:8px; }
+.lb-caption{ font-weight:600; margin-bottom:6px; }
+.lb-strip{ display:flex; gap:6px; flex-wrap:wrap; justify-content:center; }
+.lb-thumb{
+  width:90px; height:60px; border:1px solid #e5e7eb; border-radius:4px;
+  background:#fff center/cover no-repeat; display:flex; align-items:center; justify-content:center;
+  font-size:.75rem; color:#111; cursor:pointer; opacity:.8;
+}
+.lb-thumb.active{ outline:2px solid #111; opacity:1; }
+
+
+/* --- Force full-screen compare + its two maps --- */
+.compare,
+#singleMap {
+  position: fixed !important;  /* override older .map layout */
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 0;
+}
+
+/* The two map containers inside the compare wrapper */
+#compare .map,
+.compare .map {
+  position: absolute !important;   /* kill top/bottom offsets */
+  top: 0; left: 0; right: 0; bottom: 0;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+
+
+/* (Optional) keep the swipe handle visible and easy to grab */
+.mapboxgl-compare { z-index: 5; }
+
+
+.compare::before, #singleMap::before { content:""; position:absolute; top:0; left:0; right:0; height:52px; pointer-events:none; }
+.compare::after,  #singleMap::after  { content:""; position:absolute; bottom:0; left:0; right:0; height:36px; pointer-events:none; }
+
+/* Stats drawer shorter */
+.drawer {
+  bottom: -45vh;   /* was -60vh */
+  height: 45vh;    /* was 60vh */
+}
+.drawer.open {
+  bottom: 36px;
+}
+.drawer .drawer-body {
+  height: calc(45vh - 72px); /* adjust for tabs/header */
+}
+
+/* Thumbnails smaller */
+.cards {
+  grid-template-columns: repeat(auto-fill,minmax(180px,1fr)); /* was 260px */
+}
+.card {
+  min-height: 100px; /* smaller boxes */
+}
+
+/* Lightbox with side-by-side layout for graph + paragraph */
+.lb-content {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  align-items: flex-start;
+  justify-content: center;
+}
+.lb-content .lb-media {
+  flex: 1 1 65%;
+}
+.lb-content .lb-descbox {
+  flex: 1 1 35%;
+  background: #fafafa;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  padding: 0.75rem;
+  font-size: 0.9rem;
+  color: #333;
+  line-height: 1.4;
+  overflow-y: auto;
+  max-height: 70vh;
+}
+
+/* Stats gallery: 4 across, then 3 */
+.cards{
+  display:grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: .75rem 1rem;
+  align-items:start;
+}
+
+/* Make each card a figure with a fixed thumb box + caption */
+.card{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:flex-start;
+  background:#fff;              /* no panel fill so the thumb pops */
+  border:1px solid var(--border);
+  border-radius:6px;
+  padding:.5rem;
+  cursor:pointer;
+}
+
+/* thumb area (same size for graphs and tables) */
+.card .thumb{
+  width:100%;
+  height:120px;                 /* same-sized thumbnails */
+  background:#f8fafc center/contain no-repeat;
+  border-radius:4px;
+  border:1px solid var(--border);
+}
+
+/* table thumbs get a simple label in place of an image */
+.card.table .thumb{
+  display:flex; align-items:center; justify-content:center;
+  font-size:.9rem; color:#333;
+  background:#fff;
+}
+
+/* caption under each thumb */
+.card .label{
+  margin-top:.5rem;
+  font-size:.85rem;
+  color:var(--muted);
+  text-align:center;
+}
+
+/* Optional: if you truly want only 7 items visible (4 + 3), hide the 8th */
+.cards .card:nth-child(8){ display:none; }  /* ← remove this line if you want 4 + 4 */
+
+/* Keep the drawer smaller per your last change */
+.drawer{ bottom:-45vh; height:45vh; }
+.drawer.open{ bottom:36px; }
+.drawer .drawer-body{ height:calc(45vh - 72px); }
+
+/* Single clean row of 8 thumbnails */
+.cards.one-line{
+  display:grid;
+  grid-template-columns: repeat(8, minmax(120px, 1fr));
+  gap: 12px 14px;
+  align-items:start;
+  min-width: 980px;              /* keep things from collapsing too small */
+}
+
+/* Allow horizontal scroll if the window is narrow */
+.drawer .drawer-body{ overflow-x:auto; }
+
+/* Card structure */
+.card{
+  display:flex; flex-direction:column; align-items:center; justify-content:flex-start;
+  background:#fff; border:1px solid var(--border); border-radius:6px;
+  padding:.5rem; cursor:pointer;
+}
+
+/* Thumbnail box (uniform size) */
+.card .thumb{
+  width:100%; height:110px;
+  background:#f8fafc center/contain no-repeat;
+  border:1px solid var(--border); border-radius:4px;
+}
+
+/* Tables: simple placeholder look */
+.card.table .thumb{
+  display:flex; align-items:center; justify-content:center; background:#fff;
+  font-size:.9rem; color:#111; font-weight:500;
+}
+
+/* Caption: small black text */
+.card .label{
+  margin-top:.45rem; font-size:.8rem; color:#111; text-align:center;
+  line-height:1.2;
+}
+
