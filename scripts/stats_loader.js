@@ -14,16 +14,16 @@ window.App = window.App || {};
       ' In the early record the Plains led the nation, but since the 2010s activity has shifted',
       ' east.', 
       '</p>', 
-      '<p class="takeaway"><em>The dashed lines show the long-term regression trend for each region.',
+      '<p class="takeaway"><em>The dashed lines show the long-term regression trend for each region.</em>',
       '</p>',
       '<ul class="bullets">',
       '<li><strong>Southeast: +36.7 per decade</strong> - the sharpest rise, driven by more cool-season and nocturnal events.</li>',
       '<li><strong>Midwest: +22.3 per decade</strong> - a steady climb, especially across the Ohio Valley and lower Great Lakes.</li>',
       '<li><strong>Plains: +7.4 per decade</strong> - nearly flat compared to the east; the historical dominance has leveled off.</li>',
       '</ul>',
-      '<strong>Overall: counts now rival or exceed the Plains in the Southeast, confirming a broader, east-shifting corridor of risk.</strong>', 
+      '<strong>Overall:</strong> counts now rival or exceed the Plains in the Southeast, confirming a broader, east-shifting corridor of risk.', 
       '</p>',  
-      '<p class="takeaway"><em>The classic “Tornado Alley” is stretching toward the Mississippi Valley.</em></p>',
+      '<p class="align-center">The classic “Tornado Alley” is stretching toward the Mississippi Valley.</p>',
       '</div>'
     ].join(''),
 
@@ -33,15 +33,16 @@ window.App = window.App || {};
       '<p>',
       'This chart shows how the share of <strong>strong tornadoes</strong> — rated EF3 or higher — has changed since the 1950s.',
       ' Even though overall tornado counts have increased, especially in the Southeast and Midwest, the <em>percentage</em> of strong tornadoes has dropped steadily everywhere.',
-      ' The dashed regression lines summarize the decline per decade, labeled as <strong>“pp/dec”</strong> meaning <em>percentage points per decade</em>.',
+      '</p>'
+      '<p class="takeaway"><em>The dashed regression lines summarize the decline per decade, labeled as <strong>“pp/dec”</strong> meaning <em>percentage points per decade</em>.',
       '</p>',
       '<ul class="bullets">',
-      '<li><strong>–0.67 pp/dec — Midwest</strong> — the steepest decline, showing that strong tornadoes now make up far less of the total compared to mid-century.</li>',
-      '<li><strong>–0.58 pp/dec — Southeast</strong> — a similar decrease, despite higher total tornado counts in recent decades.</li>',
-      '<li><strong>–0.42 pp/dec — Plains</strong> — a consistent downward slope, showing fewer strong storms relative to the region’s historical peak years.</li>',
+      '<li><strong>Midwest: -0.67 pp/dec</strong> — the steepest decline, showing that strong tornadoes now make up far less of the total compared to mid-century.</li>',
+      '<li><strong>Southeast: –0.58 pp/dec</strong> — a similar decrease, despite higher total tornado counts in recent decades.</li>',
+      '<li><strong>Plains: -0.42 pp/dec</strong> — a consistent downward slope, showing fewer strong storms relative to the region’s historical peak years.</li>',
       '</ul>',
-      '<p class="takeaway"><em>Overall: the percentage of very strong tornadoes has declined across all regions.',
-      ' This doesn’t mean storms are safer — it reflects better detection of smaller tornadoes and subtle environmental changes that favor more frequent but generally weaker events.</em></p>',
+      '<strong>Overall:</strong> the percentage of very strong tornadoes has declined across all regions.',
+      '<p class="takeaway"><em>This doesn’t mean storms are safer, it reflects better detection of smaller tornadoes and subtle environmental changes that favor more frequent but generally weaker events.</em></p>',
       '</div>'
     ].join(''),
 
@@ -234,6 +235,7 @@ window.App = window.App || {};
     render(startIndex);
   }
 })();
+
 
 
 
