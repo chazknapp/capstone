@@ -6,8 +6,23 @@ window.App = window.App || {};
 
   // (Optional) keys -> paragraph copy (kept in case you want unique text later)
   const DESCRIPTIONS = {
-    counts_region:
-      "This chart shows how tornado counts have changed by region and decade from the 1950s through the 2020s, with dashed lines representing the overall regression trends. The results reveal that tornado activity is increasing most sharply in the Southeast, where counts rise by roughly +36.7 tornadoes per decade. The Midwest also shows a steady upward trend of about +22.3 tornadoes per decade, while the traditional Great Plains region has leveled off, increasing only slightly at +7.4 per decade. In earlier decades, the Plains clearly dominated tornado frequency, but since the 1990s, that balance has shifted eastward. The Southeast now rivals or surpasses the Plains in total tornado counts, signaling a broader and more dispersed tornado corridor across the central and eastern United States. These results confirm what the KDE and centroid analyses show — Tornado Alley is gradually migrating east, creating new zones of risk in regions historically considered less tornado-prone.",
+    counts_region: `
+      <div class="stat-desc">
+        <h3 class="desc-title">Counts by Decade &amp; Region</h3>
+        <p>
+          This chart shows how tornado totals change by decade in the Midwest, Plains, and Southeast.
+          In the early record the Plains led the nation, but since the 1990s activity has shifted
+          east. The dashed lines show the long-term regression trend for each region.
+        </p>
+        <ul class="bullets">
+          <li><strong>+36.7 per decade — Southeast</strong> — the sharpest rise, driven by more cool-season and nocturnal events.</li>
+          <li><strong>+22.3 per decade — Midwest</strong> — a steady climb, especially across the Ohio Valley and lower Great Lakes.</li>
+          <li><strong>+7.4 per decade — Plains</strong> — nearly flat compared to the east; the historical dominance has leveled off.</li>
+        </ul>
+        <p class="takeaway"><em>Overall: counts now rival or exceed the Plains in the Southeast, confirming a broader, east-shifting corridor of risk — the classic “Tornado Alley” is stretching toward the Mississippi Valley.</em></p>
+      </div>
+    `,
+,
     ef_decade:
       "When we shift from total tornado counts to the share of strong tornadoes (EF3 or higher), the data shows a clear and consistent decline across all regions. Since the 1950s, the percentage of strong tornadoes has dropped steadily in the Midwest, Southeast, and Plains, with regression slopes of −0.67, −0.58, and −0.42 percentage points per decade, respectively. These highly correlated trends (R² values from 0.84 to 0.94) indicate that the decline is not random but systematic. This means that although tornadoes are becoming more frequent, particularly in the Southeast, they are generally weaker on average. Improved detection of smaller tornadoes and potential shifts in storm environments likely contribute to this pattern. In short, the eastward shift in tornado activity reflects greater frequency, not greater strength — the proportion of very strong tornadoes has been decreasing everywhere since the mid-20th century.",
     casualties:
@@ -136,5 +151,6 @@ window.App = window.App || {};
     render(startIndex);
   }
 })();
+
 
 
