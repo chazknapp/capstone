@@ -112,7 +112,7 @@ window.App = window.App || {};
       '<li><strong>Southeast:</strong> the most pronounced increase in frequency (<strong>+36.7 per decade</strong>, R²=0.64), nearly flat seasonality change (+0.03 %pt/dec, R²=0.04), and a consistent decrease in strong tornado share (–0.58 %pt/dec, R²=0.89).</li>',
       '<li><strong>Correlation strength (R²):</strong> higher R² values indicate a more reliable trend — especially for the decline in strong tornadoes, which exceeds 0.8 in every region, showing a robust long-term signal.</li>',
       '</ul>',
-      '<p class="takeaway"><em>Overall: regression trends show that tornado activity is not just moving eastward — it is <strong>changing in character</strong>.',
+      '<p class="takeaway"><em>Overall: regression trends show that tornado activity is not just moving eastward - it is <strong>changing in character</strong>.',
       ' The Plains see more off-season storms, the Midwest’s tornadoes are weakening but still frequent, and the Southeast is emerging as the most consistently active and hazardous region.</em></p>',
       '</div>'
     ].join(''),
@@ -230,6 +230,7 @@ window.App = window.App || {};
     render(startIndex);
   }
 })();
+
 
 
 
