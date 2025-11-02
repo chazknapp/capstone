@@ -58,7 +58,7 @@ window.App = window.App || {};
       '<li><strong>Plains:</strong> higher totals in the <strong>1950s–1970s</strong>, then a steady decline, consistent with better warnings and fewer large-casualty outbreaks.</li>',
       '<li><strong>Southeast:</strong> persistently elevated totals into the <strong>2000s–2010s</strong>, reflecting greater exposure and vulnerability even as other regions trend lower.</li>',
       '</ul>',
-      '<p class="takeaway"><em>Overall: casualty totals have generally fallen in the Midwest and Plains after mid-century peaks, while the Southeast remains comparatively high in recent decades.',
+      '<strong>Overall:</strong> casualty totals have generally fallen in the Midwest and Plains after mid-century peaks, while the Southeast remains comparatively high in recent decades.',
       ' This speaks to human impact and exposure; it does not by itself measure tornado severity.</em></p>',
       '</div>'
     ].join(''),
@@ -78,8 +78,8 @@ window.App = window.App || {};
       '<li><strong>Path area:</strong> average track footprints have become smaller overall, but with occasional large outliers (e.g., 2011 Joplin, 2013 Moore), causing modern “short but wide” signatures.</li>',
       '<li><strong>Recent moderation:</strong> the 2010s and 2020s show fewer total tornadoes than the 2000s but still significant impacts — a balance of more frequent minor events and fewer catastrophic outbreaks.</li>',
       '</ul>',
-      '<p class="takeaway"><em>Overall: tornadoes have become more common in the record but generally weaker and less deadly.',
-      ' The data reflects improved detection, changing environments, and population growth near impact zones — painting a story of evolving risk rather than simple decline.</em></p>',
+      '<strong>Overall:</strong> tornadoes have become more common in the record but generally weaker and less deadly.',
+      ' The data reflects improved detection, changing environments, and population growth near impact zones - painting a story of evolving risk rather than simple decline.</em></p>',
       '</div>'
     ].join(''),
 
@@ -98,7 +98,7 @@ window.App = window.App || {};
       '<li><strong>Intensity balance:</strong> while the Plains still dominate in raw tornado numbers, both the Midwest and Southeast show stronger storms relative to total counts, suggesting more severe local impacts per event.</li>',
       '<li><strong>Human exposure:</strong> the Southeast’s high casualty burden demonstrates how geography and demography, rather than storm count alone, now define the most dangerous tornado region in the U.S.</li>',
       '</ul>',
-      '<p class="takeaway"><em>Overall: these totals show a clear transition — Tornado Alley’s traditional heart in the Plains remains active,',
+      '<strong>Overall:</strong> these totals show a clear transition — Tornado Alley’s traditional heart in the Plains remains active,',
       ' but the Southeast has become the nation’s most hazardous corridor for human impacts, blending strong storms with vulnerable landscapes and year-round risk.</em></p>',
       '</div>'
     ].join(''),
@@ -117,7 +117,7 @@ window.App = window.App || {};
       '<li><strong>Southeast:</strong> the most pronounced increase in frequency (<strong>+36.7 per decade</strong>, R²=0.64), nearly flat seasonality change (+0.03 %pt/dec, R²=0.04), and a consistent decrease in strong tornado share (–0.58 %pt/dec, R²=0.89).</li>',
       '<li><strong>Correlation strength (R²):</strong> higher R² values indicate a more reliable trend — especially for the decline in strong tornadoes, which exceeds 0.8 in every region, showing a robust long-term signal.</li>',
       '</ul>',
-      '<p class="takeaway"><em>Overall: regression trends show that tornado activity is not just moving eastward - it is <strong>changing in character</strong>.',
+      '<strong>Overall:</strong> regression trends show that tornado activity is not just moving eastward - it is <strong>changing in character</strong>.',
       ' The Plains see more off-season storms, the Midwest’s tornadoes are weakening but still frequent, and the Southeast is emerging as the most consistently active and hazardous region.</em></p>',
       '</div>'
     ].join(''),
@@ -235,6 +235,7 @@ window.App = window.App || {};
     render(startIndex);
   }
 })();
+
 
 
 
