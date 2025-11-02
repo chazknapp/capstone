@@ -160,7 +160,7 @@
             <p>
               This project examines how tornado activity across the United States has evolved over the past seventy-five years, focusing on long-term shifts in both strength and geographic distribution. 
               Using NOAA’s official tornado event database from 1950 to 2024, I conducted spatial and temporal analyses to determine whether the traditional Tornado Alley in the Great Plains still represents the nation’s main tornado corridor, or if the area of highest activity has shifted eastward toward the Southeast and Midwest. 
-              Previous research has identified similar eastward trends, connecting them to changes in storm environments, atmospheric moisture, and large-scale climate variability (Cao et al., 2021; Gensini & Brooks, 2018; Coleman et al., 2024). 
+              Previous research has identified similar eastward trends, connecting them to changes in storm environments, atmospheric moisture, and large-scale climate variability (Cao et al., 2021; Gensini &amp; Brooks, 2018; Coleman et al., 2024). 
               Building on these findings, I used ArcGIS Pro to generate decade-by-decade kernel density (KDE), tessellation, and centroid analyses, supported by data preprocessing in Python and RStudio. 
               The results show that tornadoes were generally stronger in the 1950s and 1960s, while more recent decades have produced more frequent but weaker events that are spreading east into more densely populated areas. 
               This transition suggests that while the Plains remain an active region, the geographic center of tornado risk has migrated east, particularly into parts of the Mississippi Valley and the Southeast. 
@@ -171,7 +171,7 @@
             <h3>Project Overview</h3>
             <p>
               The goal of this project was to analyze the long-term spatial and temporal patterns of tornado activity in the United States and determine whether Tornado Alley has shifted eastward over time. 
-              The project was motivated by recurring claims that tornado frequency is increasing in the Southeast while declining in the central Plains, a trend supported by recent climatological studies (Coleman et al., 2024; Gensini & Brooks, 2018). 
+              The project was motivated by recurring claims that tornado frequency is increasing in the Southeast while declining in the central Plains, a trend supported by recent climatological studies (Coleman et al., 2024; Gensini &amp; Brooks, 2018). 
               I sought to verify these assertions using consistent spatial methods, transparent data cleaning, and reproducible analysis across all decades from 1950 through 2024. 
               By visualizing trends through GIS rather than relying solely on statistical summaries, the project makes complex data more intuitive and relatable to both researchers and the public.
             </p>
@@ -210,17 +210,17 @@
         
             <h3>Methods</h3>
             <p>
-              This project combines multiple technical domains — data science, GIS modeling, and web development — to examine changes in tornado activity from both statistical and spatial perspectives. 
+              This project combines multiple technical domains, data science, GIS modeling, and web development, to examine changes in tornado activity from both statistical and spatial perspectives. 
               The methods were carefully designed to ensure reproducibility, comparability, and clarity across all decades of data.
             </p>
         
             <h4>Data Acquisition and Preprocessing</h4>
             <p>
               The analysis used NOAA’s Storm Events Database, which contains every recorded tornado event from 1950 through 2024, including its coordinates, EF/F-scale rating, injuries, fatalities, and property damage estimates. 
-              Raw CSV tables were downloaded and preprocessed in Python (using pandas) and RStudio for cleaning, filtering, and attribute generation. 
+              Raw CSV tables were downloaded and preprocessed in Python, using pandas, and RStudio for cleaning, filtering, and attribute generation. 
               Inconsistencies across decades were resolved by unifying the F and EF scales and standardizing event locations to the WGS 1984 coordinate system. 
               Events without geographic coordinates were omitted to preserve accuracy. 
-              Each event was assigned a “Decade” field (1950s–2020s) and a “Region” classification (Plains, Midwest, or Southeast) based on state boundaries.
+              Each event was assigned a “Decade” field, 1950s–2020s, and a “Region” classification, Plains, Midwest, or Southeast, based on state boundaries.
             </p>
             <p>
               Because reporting standards have evolved substantially over time, particularly after the adoption of Doppler radar and the EF scale, normalization was necessary to compare decades fairly. 
@@ -233,23 +233,23 @@
               Three main spatial analysis techniques were applied to visualize and quantify the eastward migration of tornado activity:
             </p>
             <ul>
-              <li><strong>Kernel Density Estimation (KDE)</strong> — KDE surfaces were generated for each decade using identical cell size and search radius parameters to map tornado density consistently. These maps highlight clustering patterns and allow comparison between decades. High-density regions in the 1950s and 1960s were concentrated in Kansas and Oklahoma, while later decades show a clear shift toward the Tennessee and Mississippi Valleys.</li>
-              <li><strong>Tessellation Grids</strong> — A hexagonal tessellation was applied across the contiguous United States to summarize tornado counts within equal-area cells. This method provides unbiased spatial comparison and reveals changes in intensity and frequency without influence from administrative boundaries. Separate vector layers were created for each decade and later integrated into the web app as interactive vector tiles.</li>
-              <li><strong>Centroid Shift Analysis</strong> — Centroids were calculated for each decade to trace the spatial center of tornado activity over time. To control for uneven data reporting and incomplete decades, each centroid was derived from the first five years of every decade (e.g., 1950–1954, 1960–1964, etc.), with 2020–2024 representing the current period. This approach ensures temporal consistency and minimizes bias caused by partial datasets. The resulting centroid path illustrates a steady east-southeast migration from central Oklahoma in the 1950s toward northern Mississippi by the 2020s, confirming similar conclusions reached by Gensini and Brooks (2018) and Cao et al. (2021).</li>
+              <li><strong>Kernel Density Estimation (KDE)</strong> - KDE surfaces were generated for each decade using identical cell size and search radius parameters to map tornado density consistently. These maps highlight clustering patterns and allow comparison between decades. High-density regions in the 1950s and 1960s were concentrated in Kansas and Oklahoma, while later decades show a clear shift toward the Tennessee and Mississippi Valleys.</li>
+              <li><strong>Tessellation Grids</strong> - A hexagonal tessellation was applied across the contiguous United States to summarize tornado counts within equal-area cells. This method provides unbiased spatial comparison and reveals changes in intensity and frequency without influence from administrative boundaries. Separate vector layers were created for each decade and later integrated into the web app as interactive vector tiles.</li>
+              <li><strong>Centroid Shift Analysis</strong> - Centroids were calculated for each decade to trace the spatial center of tornado activity over time. To control for uneven data reporting and incomplete decades, each centroid was derived from the first five years of every decade, for example 1950–1954, 1960–1964, and so on, with 2020–2024 representing the current period. This approach ensures temporal consistency and minimizes bias caused by partial datasets. The resulting centroid path illustrates a steady east-southeast migration from central Oklahoma in the 1950s toward northern Mississippi by the 2020s, confirming similar conclusions reached by Gensini and Brooks, 2018, and Cao et al., 2021.</li>
             </ul>
         
             <h4>Statistical Analysis</h4>
             <p>
               Statistical summaries were created for each region and decade. Linear regression models were used to estimate the rate of change in tornado counts per decade. 
-              The results showed growth of approximately +36.7 tornadoes per decade in the Southeast, +22.3 in the Midwest, and +7.4 in the Plains, closely aligning with published estimates by Coleman et al. (2024). 
-              Additionally, the proportion of strong tornadoes (EF3+) has steadily declined since the 1950s, supporting Brooks’ (2013) observation that environmental conditions now favor weaker, more frequent events. 
-              Seasonality analysis also revealed that tornado activity in the Southeast increasingly occurs during the cool season, consistent with the findings of Dixon et al. (2011).
+              The results showed growth of approximately +36.7 tornadoes per decade in the Southeast, +22.3 in the Midwest, and +7.4 in the Plains, closely aligning with published estimates by Coleman et al., 2024. 
+              Additionally, the proportion of strong tornadoes, EF3+, has steadily declined since the 1950s, supporting Brooks’ (2013) observation that environmental conditions now favor weaker, more frequent events. 
+              Seasonality analysis also revealed that tornado activity in the Southeast increasingly occurs during the cool season, consistent with the findings of Dixon et al., 2011.
             </p>
         
             <h4>Web Application Development</h4>
             <p>
               The interactive web component was developed using HTML, CSS, and JavaScript with the ArcGIS JavaScript API. 
-              Three visualization modes — KDE, Tessellation, and Points — were created, each linked to decade-based layers hosted on ArcGIS Online. 
+              Three visualization modes, KDE, Tessellation, and Points, were created, each linked to decade-based layers hosted on ArcGIS Online. 
               Users can select two decades simultaneously and activate a vertical swipe tool for comparison. 
               Optional toggles display centroid paths and hotspot overlays. 
               The interface defaults to the 1950s layer but dynamically updates based on user input, allowing interactive exploration of tornado migration. 
@@ -264,7 +264,7 @@
               The tessellation grids demonstrate a redistribution of tornado counts toward states such as Alabama, Mississippi, and Tennessee. 
               Centroid paths provide clear visual confirmation, showing steady east-southeast movement across seven decades. 
               Regression analyses reinforce these patterns, quantifying significant growth rates per decade in eastern regions. 
-              The observed decline in strong tornadoes (EF3+) corroborates Brooks’ (2013) and Cao et al.’s (2021) findings that changing environmental factors, including reduced vertical shear, influence storm intensity. 
+              The observed decline in strong tornadoes, EF3+, corroborates Brooks’ (2013) and Cao et al.’s (2021) findings that changing environmental factors, including reduced vertical shear, influence storm intensity. 
               Collectively, these results indicate that Tornado Alley is no longer a fixed geographical feature but a dynamic and evolving corridor of risk.
             </p>
         
@@ -280,8 +280,8 @@
             <h3>Recommendations for Future Development</h3>
             <ul>
               <li>Update the analysis with data through 2030 and re-compute centroids using the standardized five-year approach for consistency.</li>
-              <li>Integrate atmospheric indices such as CAPE, shear, and precipitation anomalies to examine meteorological drivers of observed trends (Gensini & Brooks, 2018).</li>
-              <li>Incorporate socioeconomic and infrastructure data to assess vulnerability in high-risk regions (Coleman et al., 2024).</li>
+              <li>Integrate atmospheric indices such as CAPE, shear, and precipitation anomalies to examine meteorological drivers of observed trends, Gensini &amp; Brooks, 2018.</li>
+              <li>Incorporate socioeconomic and infrastructure data to assess vulnerability in high-risk regions, Coleman et al., 2024.</li>
               <li>Enhance mobile and accessibility features and host the web application on a public cloud environment.</li>
               <li>Expand collaboration with climatologists and emergency management agencies to translate findings into actionable preparedness strategies.</li>
             </ul>
@@ -289,13 +289,14 @@
             <h3>References</h3>
             <ul>
               <li>Brooks, H. E. (2013). Severe thunderstorms and climate change. <em>Atmospheric Research</em>, 123, 129–138.</li>
-              <li>Cao, Z., Zhang, R., & Chen, X. (2021). Geographic shift and environmental change of U.S. tornado activities in a warming climate. <em>Atmosphere</em>, 12(8), 945–960.</li>
-              <li>Coleman, T. A., Thompson, R. L., & Forbes, G. S. (2024). Spatial and seasonal shifts in tornado activity in the United States. <em>Journal of Applied Meteorology and Climatology</em>, 63(2), 215–232.</li>
-              <li>Dixon, P. G., Mercer, A. E., Choi, J., & Allen, J. S. (2011). Tornado risk analysis: Is Dixie Alley distinct from Tornado Alley? <em>Bulletin of the American Meteorological Society</em>, 92(4), 433–444.</li>
-              <li>Gensini, V. A., & Brooks, H. E. (2018). Spatial trends in United States tornado frequency. <em>npj Climate and Atmospheric Science</em>, 1(1), 1–5.</li>
+              <li>Cao, Z., Zhang, R., &amp; Chen, X. (2021). Geographic shift and environmental change of U.S. tornado activities in a warming climate. <em>Atmosphere</em>, 12(8), 945–960.</li>
+              <li>Coleman, T. A., Thompson, R. L., &amp; Forbes, G. S. (2024). Spatial and seasonal shifts in tornado activity in the United States. <em>Journal of Applied Meteorology and Climatology</em>, 63(2), 215–232.</li>
+              <li>Dixon, P. G., Mercer, A. E., Choi, J., &amp; Allen, J. S. (2011). Tornado risk analysis: Is Dixie Alley distinct from Tornado Alley? <em>Bulletin of the American Meteorological Society</em>, 92(4), 433–444.</li>
+              <li>Gensini, V. A., &amp; Brooks, H. E. (2018). Spatial trends in United States tornado frequency. <em>npj Climate and Atmospheric Science</em>, 1(1), 1–5.</li>
             </ul>
           </article>
         </div>
+
 
 
 
@@ -336,6 +337,7 @@
   </script>
 </body>
 </html>
+
 
 
 
