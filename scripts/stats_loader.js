@@ -14,16 +14,16 @@ window.App = window.App || {};
       ' In the early record the Plains led the nation, but since the 2010s activity has shifted',
       ' east.', 
       '</p>', 
-      '<strong>The dashed lines show the long-term regression trend for each region.</strong>',
+      '<p class="takeaway"><em>The dashed lines show the long-term regression trend for each region.',
       '</p>',
       '<ul class="bullets">',
       '<li><strong>Southeast: +36.7 per decade</strong> - the sharpest rise, driven by more cool-season and nocturnal events.</li>',
       '<li><strong>Midwest: +22.3 per decade</strong> - a steady climb, especially across the Ohio Valley and lower Great Lakes.</li>',
       '<li><strong>Plains: +7.4 per decade</strong> - nearly flat compared to the east; the historical dominance has leveled off.</li>',
       '</ul>',
-      'Overall: counts now rival or exceed the Plains in the Southeast, confirming a broader, east-shifting corridor of risk.', 
+      '<strong>Overall: counts now rival or exceed the Plains in the Southeast, confirming a broader, east-shifting corridor of risk.</strong>', 
       '</p>',  
-      '<p class="takeaway"><em> classic “Tornado Alley” is stretching toward the Mississippi Valley.</em></p>',
+      '<p class="takeaway"><em>The classic “Tornado Alley” is stretching toward the Mississippi Valley.</em></p>',
       '</div>'
     ].join(''),
 
@@ -234,6 +234,7 @@ window.App = window.App || {};
     render(startIndex);
   }
 })();
+
 
 
 
