@@ -6,23 +6,24 @@ window.App = window.App || {};
 
   // (Optional) keys -> paragraph copy (kept in case you want unique text later)
   const DESCRIPTIONS = {
-    counts_region: `
-      <div class="stat-desc">
-        <h3 class="desc-title">Counts by Decade &amp; Region</h3>
-        <p>
-          This chart shows how tornado totals change by decade in the Midwest, Plains, and Southeast.
-          In the early record the Plains led the nation, but since the 1990s activity has shifted
-          east. The dashed lines show the long-term regression trend for each region.
-        </p>
-        <ul class="bullets">
-          <li><strong>+36.7 per decade — Southeast</strong> — the sharpest rise, driven by more cool-season and nocturnal events.</li>
-          <li><strong>+22.3 per decade — Midwest</strong> — a steady climb, especially across the Ohio Valley and lower Great Lakes.</li>
-          <li><strong>+7.4 per decade — Plains</strong> — nearly flat compared to the east; the historical dominance has leveled off.</li>
-        </ul>
-        <p class="takeaway"><em>Overall: counts now rival or exceed the Plains in the Southeast, confirming a broader, east-shifting corridor of risk — the classic “Tornado Alley” is stretching toward the Mississippi Valley.</em></p>
-      </div>
-    `,
-,
+      counts_region: [
+        '<div class="stat-desc">',
+        '<h3 class="desc-title">Counts by Decade &amp; Region</h3>',
+        '<p>',
+        'This chart shows how tornado totals change by decade in the Midwest, Plains, and Southeast.',
+        ' In the early record the Plains led the nation, but since the 1990s activity has shifted',
+        ' east. The dashed lines show the long-term regression trend for each region.',
+        '</p>',
+        '<ul class="bullets">',
+        '<li><strong>+36.7 per decade — Southeast</strong> — the sharpest rise, driven by more cool-season and nocturnal events.</li>',
+        '<li><strong>+22.3 per decade — Midwest</strong> — a steady climb, especially across the Ohio Valley and lower Great Lakes.</li>',
+        '<li><strong>+7.4 per decade — Plains</strong> — nearly flat compared to the east; the historical dominance has leveled off.</li>',
+        '</ul>',
+        '<p class="takeaway"><em>Overall: counts now rival or exceed the Plains in the Southeast, confirming a broader, east-shifting corridor of risk — the classic “Tornado Alley” is stretching toward the Mississippi Valley.</em></p>',
+        '</div>'
+      ].join(''),
+  
+    
     ef_decade:
       "When we shift from total tornado counts to the share of strong tornadoes (EF3 or higher), the data shows a clear and consistent decline across all regions. Since the 1950s, the percentage of strong tornadoes has dropped steadily in the Midwest, Southeast, and Plains, with regression slopes of −0.67, −0.58, and −0.42 percentage points per decade, respectively. These highly correlated trends (R² values from 0.84 to 0.94) indicate that the decline is not random but systematic. This means that although tornadoes are becoming more frequent, particularly in the Southeast, they are generally weaker on average. Improved detection of smaller tornadoes and potential shifts in storm environments likely contribute to this pattern. In short, the eastward shift in tornado activity reflects greater frequency, not greater strength — the proportion of very strong tornadoes has been decreasing everywhere since the mid-20th century.",
     casualties:
@@ -151,6 +152,7 @@ window.App = window.App || {};
     render(startIndex);
   }
 })();
+
 
 
 
