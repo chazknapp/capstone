@@ -33,7 +33,7 @@ window.App = window.App || {};
       '<p>',
       'This chart shows how the share of <strong>strong tornadoes</strong> — rated EF3 or higher — has changed since the 1950s.',
       ' Even though overall tornado counts have increased, especially in the Southeast and Midwest, the <em>percentage</em> of strong tornadoes has dropped steadily everywhere.',
-      '</p>'
+      '</p>',
       '<p class="takeaway"><em>The dashed regression lines summarize the decline per decade, labeled as <strong>“pp/dec”</strong> meaning <em>percentage points per decade</em>.',
       '</p>',
       '<ul class="bullets">',
@@ -235,6 +235,7 @@ window.App = window.App || {};
     render(startIndex);
   }
 })();
+
 
 
 
