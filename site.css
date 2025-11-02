@@ -158,7 +158,7 @@ html,body{
 /* --- Readable content width for About + Proposal --- */
 #aboutPane .about,
 #proposalPane .about{
-  max-width:960px;           /* adjust to taste */
+  max-width:1200px;           /* adjust to taste */
   margin-left:auto;
   margin-right:auto;
   padding-left:24px;
@@ -175,3 +175,4 @@ html,body{
 
 /* If you want a centered header inside any description, add this class to the element */
 .center-title{ text-align:center }
+
