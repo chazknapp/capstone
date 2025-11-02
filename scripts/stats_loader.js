@@ -58,12 +58,64 @@ window.App = window.App || {};
       '</div>'
     ].join(''),
     
-    decade_summary:
-      "This table summarizes how tornado patterns have evolved across the Plains, Midwest, and Southeast since the 1950s. Tornado counts rose sharply through the late 20th century, peaking in the 2000s with more than 12,000 events, before leveling off in recent decades. At the same time, the percentage of strong tornadoes (EF3 or higher) has dropped from about 45% in the 1950s to near 12% today, showing a long-term decline in intensity. Casualties were highest in the 1960s and 1970s during major outbreak years but have generally decreased thanks to improved forecasting and warning systems. Track lengths and path areas were greater in earlier decades, while modern storms tend to be shorter but occasionally wider and more erratic. Overall, the data reveals a clear shift toward more frequent but weaker tornadoes, with continued high impacts as activity migrates east into more densely populated regions.",
-    regional_totals:
-      "The regional totals underscore the eastward redistribution of tornado activity and impacts. The Plains, long considered the core of Tornado Alley, recorded the highest number of tornadoes overall (26,609), but with a lower share of strong events (18.9%) and fewer total casualties (21,291) compared to other regions. The Midwest experienced fewer tornadoes (18,531) but nearly one in four reached strong intensity (23.7%), contributing to almost 30,000 casualties. The Southeast, however, stands out as the most human-impacted region: although its total tornado count (22,274) is lower than the Plains, it shares the same high percentage of strong tornadoes (23.7%) and far exceeds all regions in casualties—over 43,000 in total, including 2,817 deaths and more than 41,000 injuries. These numbers make clear that while the Plains remain tornado-rich, the Southeast’s dense population, frequent outbreaks, and year-round exposure now make it the most dangerous region for human impacts.",
-    regression_summary:
-      "The regression summary captures three defining tornado trends across the Plains, Midwest, and Southeast from the 1950s through the 2020s. In the Plains, tornado frequency shows minimal growth (+7 per decade, R²=0.03) but a notable seasonal shift toward more cool-season storms (+0.17 points per decade, R²=0.58) and a steady decline in strong tornadoes (–0.42 points, R²=0.84). The Midwest exhibits moderate growth in frequency (+22 per decade, R²=0.54) and a slight cool-season increase (+0.10 points, R²=0.19), paired with the steepest drop in strong tornado share (–0.67 points, R²=0.94). The Southeast displays the strongest rise in frequency (+37 per decade, R²=0.64) but little change in seasonality (+0.03 points, R²=0.04), while also showing a consistent decline in strong tornadoes (–0.58 points, R²=0.89). Taken together, these results confirm that tornado activity is not only shifting eastward but also evolving in character—cool-season storms are becoming more common in the Plains, intensity is declining in the Midwest, and the Southeast is emerging as the most active and persistent risk zone."
+      decade_summary: [
+      '<div class="stat-desc">',
+      '<h3 class="desc-title">Decade Summary (Plains + Midwest + Southeast)</h3>',
+      '<p>',
+      'This table condenses nearly 75 years of tornado records, combining all three major regions to show long-term changes in activity, strength, and human impact.',
+      ' Each row represents one decade of combined totals and averages, highlighting the major trends shaping modern Tornado Alley.',
+      '</p>',
+      '<ul class="bullets">',
+      '<li><strong>Rising counts:</strong> total tornado reports increased from <strong>4,600</strong> in the 1950s to over <strong>12,000</strong> in the 2000s, largely due to better detection and reporting coverage.</li>',
+      '<li><strong>Weaker intensity:</strong> the share of strong (EF≥3) tornadoes dropped from about <strong>45%</strong> in the 1950s to just <strong>12%</strong> by the 2020s, a clear long-term decline in relative strength.</li>',
+      '<li><strong>Casualty shift:</strong> combined deaths and injuries peaked in the <strong>1960s–1970s</strong> (17,000–19,000 total) and have fallen sharply since, reflecting better warning systems and building standards.</li>',
+      '<li><strong>Track length:</strong> storms in earlier decades were generally longer-lived — averaging <strong>10–12 miles</strong> — compared to 2–4 miles in most recent decades.</li>',
+      '<li><strong>Path area:</strong> average track footprints have become smaller overall, but with occasional large outliers (e.g., 2011 Joplin, 2013 Moore), causing modern “short but wide” signatures.</li>',
+      '<li><strong>Recent moderation:</strong> the 2010s and 2020s show fewer total tornadoes than the 2000s but still significant impacts — a balance of more frequent minor events and fewer catastrophic outbreaks.</li>',
+      '</ul>',
+      '<p class="takeaway"><em>Overall: tornadoes have become more common in the record but generally weaker and less deadly.',
+      ' The data reflects improved detection, changing environments, and population growth near impact zones — painting a story of evolving risk rather than simple decline.</em></p>',
+      '</div>'
+    ].join(''),
+
+
+      regional_totals: [
+      '<div class="stat-desc">',
+      '<h3 class="desc-title">Regional Totals (1950–2020s)</h3>',
+      '<p>',
+      'This table compares tornado totals, strength, and casualties across the Plains, Midwest, and Southeast from 1950 through the 2020s.',
+      ' It highlights how storm frequency, intensity, and human impact vary sharply by region — revealing where the most people are affected and where risk has evolved most.',
+      '</p>',
+      '<ul class="bullets">',
+      '<li><strong>Plains:</strong> the most tornado-rich region overall with <strong>26,609 total events</strong>, but only <strong>18.9% strong (EF≥3)</strong>. Casualties are relatively lower (<strong>≈21,000 total</strong>), reflecting vast open terrain and long-standing warning infrastructure.</li>',
+      '<li><strong>Midwest:</strong> fewer total tornadoes (<strong>18,531</strong>) but a much higher proportion of strong ones (<strong>23.7%</strong>), producing nearly <strong>30,000 casualties</strong>. The Midwest’s dense population and frequent urban proximity elevate the per-storm risk.</li>',
+      '<li><strong>Southeast:</strong> stands out as the most human-impacted region with <strong>43,934 casualties</strong> — over twice the Plains total — including <strong>2,817 deaths</strong> and <strong>41,000+ injuries</strong>. Despite fewer tornadoes (<strong>22,274</strong>), it matches the Midwest in intensity share (<strong>23.7%</strong>) and experiences more fatal outcomes due to population density, tree cover, and nocturnal outbreaks.</li>',
+      '<li><strong>Intensity balance:</strong> while the Plains still dominate in raw tornado numbers, both the Midwest and Southeast show stronger storms relative to total counts, suggesting more severe local impacts per event.</li>',
+      '<li><strong>Human exposure:</strong> the Southeast’s high casualty burden demonstrates how geography and demography, rather than storm count alone, now define the most dangerous tornado region in the U.S.</li>',
+      '</ul>',
+      '<p class="takeaway"><em>Overall: these totals show a clear transition — Tornado Alley’s traditional heart in the Plains remains active,',
+      ' but the Southeast has become the nation’s most hazardous corridor for human impacts, blending strong storms with vulnerable landscapes and year-round risk.</em></p>',
+      '</div>'
+    ].join(''),
+
+      regression_summary: [
+      '<div class="stat-desc">',
+      '<h3 class="desc-title">Regression Summary of Tornado Trends (1950–2020s)</h3>',
+      '<p>',
+      'This table summarizes long-term statistical trends in tornado behavior for the Plains, Midwest, and Southeast using regression slopes calculated per decade.',
+      ' Each slope represents the rate of change in frequency, strength, or seasonal timing over roughly seven decades of record.',
+      ' Values labeled as <strong>(%pt/dec)</strong> mean <em>percentage points per decade</em> — showing how much a share (like the percentage of strong or cool-season tornadoes) changes each decade.',
+      '</p>',
+      '<ul class="bullets">',
+      '<li><strong>Plains:</strong> shows minimal change in total frequency (<strong>+7.4 per decade</strong>, R²=0.03), but a moderate increase in <strong>cool-season storms</strong> (+0.17 %pt/dec, R²=0.58) and a steady decline in <strong>strong tornadoes</strong> (–0.42 %pt/dec, R²=0.84).</li>',
+      '<li><strong>Midwest:</strong> moderate growth in overall frequency (<strong>+22.3 per decade</strong>, R²=0.54) and a slight uptick in cool-season share (+0.10 %pt/dec, R²=0.19), coupled with the <strong>steepest drop in strong-tornado proportion</strong> (–0.67 %pt/dec, R²=0.94).</li>',
+      '<li><strong>Southeast:</strong> the most pronounced increase in frequency (<strong>+36.7 per decade</strong>, R²=0.64), nearly flat seasonality change (+0.03 %pt/dec, R²=0.04), and a consistent decrease in strong tornado share (–0.58 %pt/dec, R²=0.89).</li>',
+      '<li><strong>Correlation strength (R²):</strong> higher R² values indicate a more reliable trend — especially for the decline in strong tornadoes, which exceeds 0.8 in every region, showing a robust long-term signal.</li>',
+      '</ul>',
+      '<p class="takeaway"><em>Overall: regression trends show that tornado activity is not just moving eastward — it is <strong>changing in character</strong>.',
+      ' The Plains see more off-season storms, the Midwest’s tornadoes are weakening but still frequent, and the Southeast is emerging as the most consistently active and hazardous region.</em></p>',
+      '</div>'
+    ].join(''),
   };
 
   const cards = Array.from(pane.querySelectorAll('.card'));
@@ -178,6 +230,7 @@ window.App = window.App || {};
     render(startIndex);
   }
 })();
+
 
 
 
