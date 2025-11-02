@@ -80,8 +80,9 @@
 
     <!-- Footer -->
     <footer id="bottombar">
-      <button id="btnStats" class="link">Stats</button>
       <button id="btnAbout" class="link">About</button>
+      <button id="btnStats" class="link">Stats</button>
+      <button id="btnProposal" class="link">Proposal</button>
     </footer>
 
     <!-- Drawer -->
@@ -89,36 +90,57 @@
       <div class="drawer-tabs">
         <button data-pane="statsPane" class="active">Stats</button>
         <button data-pane="aboutPane">About</button>
+        <button data-pane="proposalPane">Proposal</button>
       </div>
+    
       <div class="drawer-body">
+        <!-- STATS -->
         <div id="statsPane" class="pane active">
           <div class="cards one-line">
             <!-- 3 graphs -->
             <div class="card" data-type="graph" data-src="stats/graphs/tor_regression.png" data-caption="Counts by Decade & Region" data-key="counts_region"></div>
             <div class="card" data-type="graph" data-src="stats/graphs/tor_ef_decade.png" data-caption="EF Distribution by Decade" data-key="ef_decade"></div>
             <div class="card" data-type="graph" data-src="stats/graphs/tor_casualties.png" data-caption="Casualties Over Time" data-key="casualties"></div>
-            
-
+    
             <!-- 3 tables -->
             <div class="card" data-type="table" data-src="stats/tables/decade_summary.html" data-caption="Decade Summary (Table)" data-key="decade_summary"></div>
             <div class="card" data-type="table" data-src="stats/tables/regional_totals.html" data-caption="Regional Totals (Table)" data-key="regional_totals"></div>
             <div class="card" data-type="table" data-src="stats/tables/regression_summary.html" data-caption="Regression Summary (Table)" data-key="regression_summary"></div>
           </div>
         </div>
-
+    
+        <!-- ABOUT -->
         <div id="aboutPane" class="pane">
           <article class="about">
-            <h2>About this project</h2>
+            <h2>About This Mapbook</h2>
             <p>
-              Map symbology is authored in ArcGIS Pro and preserved by publishing decade-based layers to ArcGIS Online.
-              KDE, Tessellation, and Points are drawn from Esri services.
+              This interactive mapbook visualizes how U.S. tornado patterns have changed from the 1950s through the 2020s.
+              It combines ArcGIS-published datasets—including Kernel Density (KDE), tessellation grids, and point features—
+              to show spatial and temporal shifts in tornado activity across the Plains, Midwest, and Southeast.
+            </p>
+            <ul>
+              <li><strong>Counts:</strong> Rising totals in the Southeast (+36.7/dec) and Midwest (+22.3/dec) indicate growing activity, while the Plains remain nearly flat (+7.4/dec).</li>
+              <li><strong>Intensity:</strong> The share of strong EF3+ tornadoes has fallen across all regions, showing a long-term weakening trend.</li>
+              <li><strong>Casualties:</strong> Human impacts peaked mid-century but now concentrate in the Southeast, where population density and nocturnal events amplify risk.</li>
+              <li><strong>Summary:</strong> These patterns suggest a gradual eastward expansion of Tornado Alley and a shift from sparse, high-intensity storms to more frequent but generally weaker ones.</li>
+            </ul>
+            <p>
+              Use the controls at the top to toggle decades, compare layers, and explore detailed metrics under <em>Stats</em>.
             </p>
           </article>
         </div>
+    
+        <!-- PROPOSAL -->
+        <div id="proposalPane" class="pane">
+          <article class="about">
+            <p>Loading proposal…</p>
+          </article>
+        </div>
       </div>
-      <button id="drawerClose" class="drawer-close">×</button>
-    </section>
-  </section>
+
+  <button id="drawerClose" class="drawer-close">×</button>
+</section>
+
 
   <!-- Scripts -->
   <script src="scripts/site.js"></script>
@@ -153,6 +175,7 @@
   </script>
 </body>
 </html>
+
 
 
 
