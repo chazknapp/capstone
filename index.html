@@ -96,18 +96,44 @@
       <div class="drawer-body">
         <!-- STATS -->
         <div id="statsPane" class="pane active">
-          <div class="cards one-line">
-            <!-- 3 graphs -->
-            <div class="card" data-type="graph" data-src="stats/graphs/tor_regression.png" data-caption="Counts by Decade & Region" data-key="counts_region"></div>
-            <div class="card" data-type="graph" data-src="stats/graphs/tor_ef_decade.png" data-caption="EF Distribution by Decade" data-key="ef_decade"></div>
-            <div class="card" data-type="graph" data-src="stats/graphs/tor_casualties.png" data-caption="Casualties Over Time" data-key="casualties"></div>
-    
-            <!-- 3 tables -->
-            <div class="card" data-type="table" data-src="stats/tables/decade_summary.html" data-caption="Decade Summary (Table)" data-key="decade_summary"></div>
-            <div class="card" data-type="table" data-src="stats/tables/regional_totals.html" data-caption="Regional Totals (Table)" data-key="regional_totals"></div>
-            <div class="card" data-type="table" data-src="stats/tables/regression_summary.html" data-caption="Regression Summary (Table)" data-key="regression_summary"></div>
+          <div class="cards six centered" id="statsGrid">
+            <!-- 3 graphs (top row) -->
+            <div class="card" data-type="graph"
+                 data-src="stats/graphs/tor_regression.png"
+                 data-caption="Counts by Decade &amp; Region"
+                 data-key="counts_region"></div>
+        
+            <div class="card" data-type="graph"
+                 data-src="stats/graphs/tor_ef_decade.png"
+                 data-caption="EF Distribution by Decade"
+                 data-key="ef_decade"></div>
+        
+            <div class="card" data-type="graph"
+                 data-src="stats/graphs/tor_casualties.png"
+                 data-caption="Casualties Over Time"
+                 data-key="casualties"></div>
+        
+            <!-- 3 tables (bottom row) — now with real thumbnails -->
+            <div class="card" data-type="table"
+                 data-src="stats/tables/decade_summary.html"
+                 data-thumb="stats/thumbs/decade_summary.png"
+                 data-caption="Decade Summary (Table)"
+                 data-key="decade_summary"></div>
+        
+            <div class="card" data-type="table"
+                 data-src="stats/tables/regional_totals.html"
+                 data-thumb="stats/thumbs/regional_totals.png"
+                 data-caption="Regional Totals (Table)"
+                 data-key="regional_totals"></div>
+        
+            <div class="card" data-type="table"
+                 data-src="stats/tables/regression_summary.html"
+                 data-thumb="stats/thumbs/regression_summary.png"
+                 data-caption="Regression Summary (Table)"
+                 data-key="regression_summary"></div>
           </div>
         </div>
+
     
         <!-- ABOUT -->
         <div id="aboutPane" class="pane">
@@ -359,6 +385,7 @@
   </script>
 </body>
 </html>
+
 
 
 
