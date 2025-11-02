@@ -111,43 +111,65 @@
     
         <!-- ABOUT -->
         <div id="aboutPane" class="pane">
-          <article class="about">
+          <article class="about align-left">
             <h2>About This Project</h2>
         
             <p>
-             This project explores how tornado behavior across the United States has evolved since the mid-20th century. 
-              By comparing data decade by decade, it examines where tornadoes occur, how their frequency and intensity 
-              have changed, and how human impacts have shifted over time. The visual and data-driven approach helps reveal 
-              long-term patterns that are often hidden in raw numbers.
+              This site presents a spatial and statistical exploration of how tornado patterns in the United States have evolved from 1950 to 2025.
+              It integrates data from NOAA’s official Storm Events Database and visualizes the results through three complementary GIS analyses: 
+              Kernel Density Estimation, Tessellation, and Centroid Mapping, each revealing a different dimension of the shifting storm landscape.
+              The goal is to make decades of scientific data both interactive and understandable, helping users see the long-term migration of tornado activity and its
+              implications for communities across the country.
             </p>
         
             <h3>Purpose</h3>
             <p>
-              The idea for this project came from a curiosity about the changing geography of Tornado Alley. 
-              Many reports claim that the country’s most active tornado corridor is moving east, but I wanted to test that idea using 
-              real data rather than speculation. Using NOAA storm records and Esri analysis tools, I worked to create an evidence-based 
-              story that connects historical data, environmental change, and population exposure into one clear picture.
+              The idea for this project came from a curiosity about the changing geography of Tornado Alley.
+              Many reports have suggested that the nation’s most active tornado corridor is moving east, but I wanted to test that idea using
+              verifiable data rather than speculation. Using NOAA storm records and Esri analysis tools, I created an evidence-based
+              narrative that connects historical data, environmental change, and population exposure into one comprehensive picture.
+              By combining statistical and spatial perspectives, this project helps bridge the gap between academic analysis and public understanding.
             </p>
         
             <h3>Findings</h3>
             <p>
-              The data show that tornado behavior has changed in measurable ways since the 1950s:
+              The data reveal measurable changes in tornado behavior over the last seventy-five years:
             </p>
             <ul>
-              <li><strong>Activity is shifting eastward</strong> - Tornado counts have leveled off in the Great Plains but have increased sharply in the Southeast and Midwest.</li>
-              <li><strong>Storms are generally weaker</strong> - The share of strong EF3+ tornadoes has declined across all regions, even as total counts have gone up.</li>
-              <li><strong>Casualties are more concentrated</strong> - Deaths and injuries have dropped overall but remain higher in the Southeast, where dense populations, heavy tree cover, and nocturnal storms increase vulnerability.</li>
-              <li><strong>Seasonality is broadening</strong> - The Plains show a small but noticeable increase in cool-season activity, meaning tornadoes are less limited to the spring months.</li>
+              <li><strong>Activity is shifting eastward</strong> - Tornado counts have leveled off in the Great Plains but increased sharply in the Southeast and Midwest.</li>
+              <li><strong>Storms are generally weaker</strong> - The share of strong EF3+ tornadoes has declined across all regions, even as total counts have risen.</li>
+              <li><strong>Casualties are more concentrated</strong> - Deaths and injuries have dropped overall but remain higher in the Southeast, where dense populations, forest cover, and nocturnal storms heighten vulnerability.</li>
+              <li><strong>Seasonality is broadening</strong> - The Plains show an increase in cool-season activity, meaning tornadoes are no longer limited to spring months.</li>
             </ul>
         
             <h3>Conclusion</h3>
             <p>
-              These trends show that the nation’s tornado risk is no longer confined to one central Alley, but instead covers a broader and shifting landscape of storms and impacts. 
-              The Southeast now experiences the greatest human toll, while the traditional Plains corridor has become quieter but still plays an important role in the overall pattern. 
-              Understanding this eastward transition, and the environmental and social factors driving it, is vital for future preparedness, forecasting, and awareness.
+              These findings show that tornado risk in the United States is no longer confined to a single central corridor.
+              The Southeast now experiences the greatest human toll, while the traditional Plains region remains active but less dominant.
+              This eastward transition reflects broader environmental and social changes, emphasizing the importance of preparedness, forecasting, and public awareness.
+              Understanding how these factors interact is critical to reducing future risk.
+            </p>
+        
+            <hr style="margin: 1.25rem 0; border: none; border-top: 1px solid #e5e7eb;" />
+        
+            <h3>How to Use This Site</h3>
+            <ul>
+              <li><strong>KDE (Kernel Density Estimation)</strong> - View heatmap-style surfaces showing where tornadoes were most concentrated in each decade.</li>
+              <li><strong>Tessellation</strong> - Explore hexagonal grids that summarize tornado counts within equal-area cells for regional comparison.</li>
+              <li><strong>Points</strong> - Visualize individual tornado locations by decade to understand spread and clustering patterns.</li>
+              <li><strong>Decade Selectors (A and B)</strong> - Choose two decades to compare, and enable “Swipe” to view them interactively side-by-side.</li>
+              <li><strong>Opacity Slider</strong> - Adjust layer transparency for clearer basemap comparison.</li>
+              <li><strong>Centroids and Path</strong> - Toggle these options to trace the eastward movement of tornado activity through time.</li>
+              <li><strong>Stats Drawer</strong> - Click “Stats” to view charts and tables summarizing key results and regression findings.</li>
+              <li><strong>Proposal</strong> - Read the full research documentation, including methodology, findings, and cited references.</li>
+            </ul>
+        
+            <p class="align-center" style="margin-top:1rem;">
+              <em>Created and developed by Chaz Knapp, 2025 — Built using ArcGIS Pro, NOAA data, and the ArcGIS JavaScript API.</em>
             </p>
           </article>
         </div>
+
 
     
         <!-- PROPOSAL -->
@@ -337,6 +359,7 @@
   </script>
 </body>
 </html>
+
 
 
 
