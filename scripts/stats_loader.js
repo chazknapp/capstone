@@ -23,16 +23,41 @@ window.App = window.App || {};
       '</div>'
     ].join(''),
 
-  
+      ef_decade: [
+      '<div class="stat-desc">',
+      '<h3 class="desc-title">% Strong Tornadoes (EF ≥ 3) by Decade</h3>',
+      '<p>',
+      'This chart shows how the share of <strong>strong tornadoes</strong> — rated EF3 or higher — has changed since the 1950s.',
+      ' Even though overall tornado counts have increased, especially in the Southeast and Midwest, the <em>percentage</em> of strong tornadoes has dropped steadily everywhere.',
+      ' The dashed regression lines summarize the decline per decade, labeled as <strong>“pp/dec”</strong> meaning <em>percentage points per decade</em>.',
+      '</p>',
+      '<ul class="bullets">',
+      '<li><strong>–0.67 pp/dec — Midwest</strong> — the steepest decline, showing that strong tornadoes now make up far less of the total compared to mid-century.</li>',
+      '<li><strong>–0.58 pp/dec — Southeast</strong> — a similar decrease, despite higher total tornado counts in recent decades.</li>',
+      '<li><strong>–0.42 pp/dec — Plains</strong> — a consistent downward slope, showing fewer strong storms relative to the region’s historical peak years.</li>',
+      '</ul>',
+      '<p class="takeaway"><em>Overall: the percentage of very strong tornadoes has declined across all regions.',
+      ' This doesn’t mean storms are safer — it reflects better detection of smaller tornadoes and subtle environmental changes that favor more frequent but generally weaker events.</em></p>',
+      '</div>'
+    ].join(''),
+
+      casualties: [
+      '<div class="stat-desc">',
+      '<h3 class="desc-title">Tornado Casualties (Deaths + Injuries) by Decade</h3>',
+      '<p>',
+      'This chart stacks <strong>injuries</strong> and <strong>deaths</strong> to show total casualties by decade for each region.',
+      ' Values are totals (injuries + deaths), not rates. Bars are grouped by region so you can compare their trajectories through time.',
+      '</p>',
+      '<ul class="bullets">',
+      '<li><strong>Midwest:</strong> a very high peak in the <strong>1960s</strong>, followed by a large drop and relatively low, stable decades from the 1980s onward.</li>',
+      '<li><strong>Plains:</strong> higher totals in the <strong>1950s–1970s</strong>, then a steady decline, consistent with better warnings and fewer large-casualty outbreaks.</li>',
+      '<li><strong>Southeast:</strong> persistently elevated totals into the <strong>2000s–2010s</strong>, reflecting greater exposure and vulnerability even as other regions trend lower.</li>',
+      '</ul>',
+      '<p class="takeaway"><em>Overall: casualty totals have generally fallen in the Midwest and Plains after mid-century peaks, while the Southeast remains comparatively high in recent decades.',
+      ' This speaks to human impact and exposure; it does not by itself measure tornado severity.</em></p>',
+      '</div>'
+    ].join(''),
     
-    ef_decade:
-      "When we shift from total tornado counts to the share of strong tornadoes (EF3 or higher), the data shows a clear and consistent decline across all regions. Since the 1950s, the percentage of strong tornadoes has dropped steadily in the Midwest, Southeast, and Plains, with regression slopes of −0.67, −0.58, and −0.42 percentage points per decade, respectively. These highly correlated trends (R² values from 0.84 to 0.94) indicate that the decline is not random but systematic. This means that although tornadoes are becoming more frequent, particularly in the Southeast, they are generally weaker on average. Improved detection of smaller tornadoes and potential shifts in storm environments likely contribute to this pattern. In short, the eastward shift in tornado activity reflects greater frequency, not greater strength — the proportion of very strong tornadoes has been decreasing everywhere since the mid-20th century.",
-    casualties:
-      "This chart shows tornado casualties (injuries and deaths) by region and decade, revealing how the human impact of tornadoes has changed over time. The Midwest saw an extreme peak in the 1960s with over 9,000 casualties, followed by a sharp decline that has remained low and stable since the 1980s. The Plains experienced high losses in the 1950s and 1970s but have shown a steady decrease since, reflecting improved warning systems and reduced storm intensity in the region. In contrast, the Southeast continues to stand out for its sustained toll, with consistently high casualties into the 2000s and 2010s. This pattern reinforces the eastward shift in tornado risk—while storms in the Plains have become less deadly, the Southeast’s higher population density and vulnerability mean the human impacts remain significant even as overall storm strength declines.",
-    seasonality:
-      "Cool-season (fall/winter) activity has grown in the eastern U.S., while traditional spring peaks in the Plains have weakened, shifting overall seasonality eastward.",
-    regression:
-      "Regression diagnostics suggest large-scale environments—moisture/CAPE and low-level shear—are increasingly favorable east of the Plains in recent decades.",
     decade_summary:
       "This table summarizes how tornado patterns have evolved across the Plains, Midwest, and Southeast since the 1950s. Tornado counts rose sharply through the late 20th century, peaking in the 2000s with more than 12,000 events, before leveling off in recent decades. At the same time, the percentage of strong tornadoes (EF3 or higher) has dropped from about 45% in the 1950s to near 12% today, showing a long-term decline in intensity. Casualties were highest in the 1960s and 1970s during major outbreak years but have generally decreased thanks to improved forecasting and warning systems. Track lengths and path areas were greater in earlier decades, while modern storms tend to be shorter but occasionally wider and more erratic. Overall, the data reveals a clear shift toward more frequent but weaker tornadoes, with continued high impacts as activity migrates east into more densely populated regions.",
     regional_totals:
@@ -153,6 +178,7 @@ window.App = window.App || {};
     render(startIndex);
   }
 })();
+
 
 
 
