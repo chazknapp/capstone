@@ -3,65 +3,55 @@
   const decades = ["1950s","1960s","1970s","1980s","1990s","2000s","2010s","2020s"];
   const $ = (id) => document.getElementById(id);
 
-  /* ------------------------ About: lazy-load ------------------------ */
-  // ------------------------ About: lazy-load (robust) ------------------------
-let _aboutLoaded = false;
+  /* ------------------------ Proposal: lazy-load (robust) ------------------------ */
+  let _proposalLoaded = false;
+  async function loadProposalOnce() {
+    if (_proposalLoaded) return;
 
-async function loadAboutOnce() {
-  if (_aboutLoaded) return;
+    // Try multiple candidate paths: relative, nested, and absolute.
+    const baseDir = location.pathname.replace(/[^/]+$/, ''); // e.g. /site/ or /
+    const candidates = [
+      'content/about.html',
+      './content/about.html',
+      baseDir + 'content/about.html',
+      '/content/about.html'
+    ];
 
-  // Try multiple candidate paths in order. This handles:
-  // - site at domain root (/content/about.html)
-  // - site in a subfolder (relative ./content/about.html)
-  // - deep paths (compute dir of current page and append content/)
-  const baseDir = location.pathname.replace(/[^/]+$/, ''); // e.g. /site/ or /
-  const candidates = [
-    'content/about.html',
-    './content/about.html',
-    baseDir + 'content/about.html',
-    '/content/about.html'
-  ];
-
-  let html = null, tried = [];
-  for (const p of candidates) {
-    try {
-      const res = await fetch(p, { cache: 'no-cache' });
-      tried.push(p + ` [${res.status}]`);
-      if (res.ok) {
-        html = await res.text();
-        break;
+    let html = null, tried = [];
+    for (const p of candidates) {
+      try {
+        const res = await fetch(p, { cache: 'no-cache' });
+        tried.push(p + ` [${res.status}]`);
+        if (res.ok) { html = await res.text(); break; }
+      } catch {
+        tried.push(p + ' [fetch error]');
       }
-    } catch (e) {
-      tried.push(p + ' [fetch error]');
+    }
+
+    const pane = $('proposalPane');
+    if (!pane) return;
+
+    if (html) {
+      pane.innerHTML = `<article class="about">${html}</article>`;
+      _proposalLoaded = true;
+    } else {
+      pane.innerHTML = `
+        <p style="color:#b00; margin:0 0 .5rem 0;">
+          Couldn't load <code>content/about.html</code>.
+        </p>
+        <details style="font-size:12px; color:#555;">
+          <summary>Details</summary>
+          <pre style="white-space:pre-wrap; margin:6px 0 0 0;">Tried:\n${tried.join('\n')}</pre>
+        </details>
+        <p style="font-size:12px; color:#555; margin:.5rem 0 0 0;">
+          Serve over HTTP (not file://) and ensure the file exists at <code>/content/about.html</code>.
+          Check capitalization on Linux (content vs Content).
+        </p>`;
+      console.error('Proposal load failed. Tried:\n' + tried.join('\n'));
     }
   }
 
-  const pane = document.getElementById('aboutPane');
-  if (!pane) return;
-
-  if (html) {
-    pane.innerHTML = `<article class="about">${html}</article>`;
-    _aboutLoaded = true;
-  } else {
-    pane.innerHTML = `
-      <p style="color:#b00; margin:0 0 .5rem 0;">
-        Couldn't load <code>content/about.html</code>.
-      </p>
-      <details style="font-size:12px; color:#555;">
-        <summary>Details</summary>
-        <pre style="white-space:pre-wrap; margin:6px 0 0 0;">Tried:\n${tried.join('\n')}</pre>
-      </details>
-      <p style="font-size:12px; color:#555; margin:.5rem 0 0 0;">
-        Make sure you're serving the site over HTTP (not file://), and that the file
-        exists at <code>/content/about.html</code> relative to <code>index.html</code>.
-        On Linux hosts, check capitalization (content vs Content).
-      </p>`;
-    console.error('About load failed. Tried:\n' + tried.join('\n'));
-  }
-}
-
-
-  /* ------------------------ Decades ------------------------ */
+  /* ------------------------ Decade selects ------------------------ */
   function populateDecadeSelects() {
     const add = (id, opts) => {
       const sel = $(id);
@@ -75,13 +65,13 @@ async function loadAboutOnce() {
     add('decadeA', decades);
     add('decadeB', decades);
 
-    // Defaults: A = 1950s, B = none + disabled until swipe
+    // Defaults: A = 1950s, B = disabled until swipe
     const a = $('decadeA'), b = $('decadeB');
     if (a) a.value = '1950s';
     if (b) { b.value = ''; b.disabled = true; }
   }
 
-  /* ------------------------ Tabs (no auto-load at home) ------------------------ */
+  /* ------------------------ Mode tabs (no auto-load at home) ------------------------ */
   function wireTabs() {
     const tabs = document.querySelectorAll('.mode-tabs .tab');
     tabs.forEach(btn => {
@@ -95,7 +85,7 @@ async function loadAboutOnce() {
     // Intentionally DO NOT select a tab on load.
   }
 
-  /* ------------------------ Map Controls ------------------------ */
+  /* ------------------------ Map controls ------------------------ */
   function wireControls() {
     // One opacity slider affects the active mode
     $('opacity')?.addEventListener('input', e =>
@@ -133,16 +123,18 @@ async function loadAboutOnce() {
     });
   }
 
-  /* ------------------------ Drawer: toggle behavior ------------------------ */
+  /* ------------------------ Drawer (Stats | About | Proposal) ------------------------ */
   function wireDrawer() {
     const drawer = $('drawer');
     const btnStats = $('btnStats');
     const btnAbout = $('btnAbout');
+    const btnProposal = $('btnProposal');
     const btnClose = $('drawerClose');
 
     const panes = {
       statsPane: $('statsPane'),
-      aboutPane: $('aboutPane')
+      aboutPane: $('aboutPane'),
+      proposalPane: $('proposalPane')
     };
 
     const tabButtons = document.querySelectorAll('.drawer-tabs button');
@@ -159,7 +151,7 @@ async function loadAboutOnce() {
       if (isOpen() && current === paneId) {
         drawer.classList.remove('open');        // clicking same button closes
       } else {
-        if (paneId === 'aboutPane') await loadAboutOnce(); // lazy-load About
+        if (paneId === 'proposalPane') await loadProposalOnce(); // lazy-load Proposal
         showPane(paneId);
         drawer.classList.add('open');           // open or switch while open
       }
@@ -167,12 +159,13 @@ async function loadAboutOnce() {
 
     btnStats?.addEventListener('click', () => toggleDrawerFor('statsPane'));
     btnAbout?.addEventListener('click', () => toggleDrawerFor('aboutPane'));
+    btnProposal?.addEventListener('click', () => toggleDrawerFor('proposalPane'));
     btnClose?.addEventListener('click', () => drawer.classList.remove('open'));
 
     // Drawer tabs at top: switch pane, keep drawer open
     tabButtons.forEach(b => {
       b.addEventListener('click', async () => {
-        if (b.dataset.pane === 'aboutPane') await loadAboutOnce(); // ensure loaded
+        if (b.dataset.pane === 'proposalPane') await loadProposalOnce(); // ensure loaded
         showPane(b.dataset.pane);
       });
     });
@@ -204,3 +197,4 @@ async function loadAboutOnce() {
     });
   });
 })();
+
