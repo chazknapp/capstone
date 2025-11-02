@@ -7,21 +7,22 @@ window.App = window.App || {};
   // (Optional) keys -> paragraph copy (kept in case you want unique text later)
   const DESCRIPTIONS = {
       counts_region: [
-        '<div class="stat-desc">',
-        '<h3 class="desc-title">Counts by Decade &amp; Region</h3>',
-        '<p>',
-        'This chart shows how tornado totals change by decade in the Midwest, Plains, and Southeast.',
-        ' In the early record the Plains led the nation, but since the 1990s activity has shifted',
-        ' east. The dashed lines show the long-term regression trend for each region.',
-        '</p>',
-        '<ul class="bullets">',
-        '<li><strong>+36.7 per decade — Southeast</strong> — the sharpest rise, driven by more cool-season and nocturnal events.</li>',
-        '<li><strong>+22.3 per decade — Midwest</strong> — a steady climb, especially across the Ohio Valley and lower Great Lakes.</li>',
-        '<li><strong>+7.4 per decade — Plains</strong> — nearly flat compared to the east; the historical dominance has leveled off.</li>',
-        '</ul>',
-        '<p class="takeaway"><em>Overall: counts now rival or exceed the Plains in the Southeast, confirming a broader, east-shifting corridor of risk — the classic “Tornado Alley” is stretching toward the Mississippi Valley.</em></p>',
-        '</div>'
-      ].join(''),
+      '<div class="stat-desc">',
+      '<h3 class="desc-title">Counts by Decade &amp; Region (with Regression Lines)</h3>',
+      '<p>',
+      'This chart shows how tornado totals change by decade in the Midwest, Plains, and Southeast.',
+      ' The dashed lines are <strong>regression lines</strong> that summarize the long-term trend.',
+      ' The label “<strong>/dec</strong>” means <em>per decade</em> — how many tornadoes the trend adds (or removes) each decade.',
+      '</p>',
+      '<ul class="bullets">',
+      '<li><strong>+36.7/dec — Southeast</strong> — the fastest growth; totals climb by about 37 tornadoes every decade, driven in part by more cool-season and nocturnal events.</li>',
+      '<li><strong>+22.3/dec — Midwest</strong> — a steady increase, especially across the Ohio Valley and lower Great Lakes.</li>',
+      '<li><strong>+7.4/dec — Plains</strong> — close to flat compared to the East; the region’s historical dominance has largely leveled off.</li>',
+      '</ul>',
+      '<p class="takeaway"><em>Overall: the regression lines show that activity is shifting east. The Southeast now rivals — and often exceeds — the Plains,',
+      ' stretching the classic “Tornado Alley” toward the Mississippi Valley and broadening the corridor of risk.</em></p>',
+      '</div>'
+    ].join(''),
   
     
     ef_decade:
@@ -152,6 +153,7 @@ window.App = window.App || {};
     render(startIndex);
   }
 })();
+
 
 
 
