@@ -136,6 +136,44 @@ html,body{
 }
 .card .label{ margin-top:.45rem; font-size:.8rem; color:#111; text-align:center; line-height:1.2 }
 
+/* Center the stats gallery and set a 3 x 2 grid */
+.cards.centered{
+  max-width: 1200px;
+  margin: 0 auto;               /* centers the whole grid */
+  padding: 0 .75rem;            /* gentle side breathing room */
+}
+
+.cards.six{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(240px, 1fr));
+  gap: 14px 16px;
+  align-items: start;
+  justify-items: center;        /* centers each card in its cell */
+}
+
+/* Card and thumb tweaks to keep images nicely centered */
+.card{
+  width: 100%;
+  max-width: 360px;             /* keeps cards from stretching too wide */
+}
+
+.card .thumb{
+  width: 100%;
+  height: 120px;
+  background: #f8fafc center/contain no-repeat; /* image centered, contained */
+  border: 1px solid var(--border);
+  border-radius: 4px;
+}
+
+/* Keep captions centered under thumbs */
+.card .label{
+  margin-top: .5rem;
+  font-size: .85rem;
+  color: var(--muted);
+  text-align: center;
+}
+
+
 /* Lightbox */
 .lb-wrap{ position:fixed; inset:0; background:rgba(0,0,0,.5); z-index:30; display:flex; align-items:center; justify-content:center }
 .lb-body{ background:#fff; border-radius:10px; max-width:95vw; max-height:90vh; padding:10px; overflow:auto; box-shadow:0 10px 30px rgba(0,0,0,.2) }
@@ -175,5 +213,6 @@ html,body{
 
 /* If you want a centered header inside any description, add this class to the element */
 .center-title{ text-align:center }
+
 
 
