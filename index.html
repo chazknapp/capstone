@@ -351,6 +351,35 @@
   <button id="drawerClose" class="drawer-close">×</button>
 </section>
 
+    <!-- Popup instructions -->
+<div id="instructionsPopup" class="instructions-popup">
+  <div class="instructions-header">
+    <h3>How to Use This Site</h3>
+    <button id="closeInstructions" class="close-btn">×</button>
+  </div>
+  <ul>
+    <li><strong>KDE (Kernel Density Estimation)</strong> – View heatmap-style surfaces showing where tornadoes were most concentrated in each decade.</li>
+    <li><strong>Tessellation</strong> – Explore hexagonal grids that summarize tornado counts within equal-area cells for regional comparison.</li>
+    <li><strong>Points</strong> – Visualize individual tornado locations by decade to understand spread and clustering patterns.</li>
+    <li><strong>Decade Selectors (A and B)</strong> – Choose two decades to compare, and enable “Swipe” to view them interactively side-by-side.</li>
+    <li><strong>Opacity Slider</strong> – Adjust layer transparency for clearer basemap comparison.</li>
+    <li><strong>Centroids</strong> – Toggle to trace the eastward movement of tornado activity through time.</li>
+    <li><strong>Stats Drawer</strong> – Click “Stats” to view charts and tables summarizing key results and regression findings.</li>
+    <li><strong>Proposal</strong> – Read the full research documentation, including methodology, findings, and cited references.</li>
+  </ul>
+</div>
+
+<script>
+  // Show popup on first load
+  window.addEventListener('load', () => {
+    const popup = document.getElementById('instructionsPopup');
+    const closeBtn = document.getElementById('closeInstructions');
+    popup.classList.add('show');
+    closeBtn.addEventListener('click', () => popup.classList.remove('show'));
+  });
+</script>
+
+
 
   <!-- Scripts -->
   <script src="scripts/site.js"></script>
@@ -385,6 +414,7 @@
   </script>
 </body>
 </html>
+
 
 
 
