@@ -152,23 +152,25 @@
     });
   }
 
-  // --- Boot
+  // Boot
   document.addEventListener('DOMContentLoaded', () => {
     populateDecadeSelects();
     wireTabs();
     wireControls();
     wireDrawer();
-
+  
     const chkCentroids = $('chkCentroids'); if (chkCentroids) chkCentroids.checked = false;
     const chkPath = $('chkCentroidPath'); if (chkPath) chkPath.checked = false;
     const chkSwipe = $('chkSwipe'); if (chkSwipe) chkSwipe.checked = false;
     const decadeB = $('decadeB'); if (decadeB) { decadeB.value = ''; decadeB.disabled = true; }
-
+  
+    // Landing overlay enter
+    const overlay = $('welcomeOverlay');
     $('btnExplore')?.addEventListener('click', async () => {
-      $('home')?.classList.remove('active');
-      $('mapview')?.classList.add('active');
-      await window.EsriApp?.init();
+      overlay?.classList.add('hide');
+      // ensure the mapview is visible if you gate it by views
+      document.getElementById('home')?.classList.remove('active');
+      document.getElementById('mapview')?.classList.add('active');
+      await window.EsriApp?.init?.();
     });
   });
-})();
-
