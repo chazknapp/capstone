@@ -208,7 +208,7 @@
   }
 
   // -------------------------------------------------------------
-  //  Tessellation CLICK (FeatureLayer for attributes)
+  //  llation CLICK (FeatureLayer for attributes)
   // -------------------------------------------------------------
   const tesAttrsId = "tesAttrs";
   let tesAttrsLV = null;
@@ -332,7 +332,7 @@ function buildTableHTML(attrs, preferredNames = ["NAME","DECADE","TOR_COUNT","IN
   // -------------------------------------------------------------
   const MODE_TEXT = {
     KDE: `<strong>KDE (Kernel Density)</strong><br/>Smoothed “heat” surface showing where tornadoes concentrate within the chosen decade. Use A Decade (and optional Swipe) to compare.`,
-    TES: `<strong>Tessellation</strong><br/>Aggregates tornado counts & casualties to grid cells for the chosen decade. <em>Click</em> a cell to see counts.`,
+    TES: `<strong>Tessellation</strong><br/>Explore hexagonal grids that summarize tornado counts within equal-area cells for regional comparison. Each cell is color-coded by EF Scale, representing the relative strength of the tornadoes it contains. <em>Click</em> a cell to see counts.`,
     PTS: `<strong>Points</strong><br/>Individual tornado reports for the chosen decade (symbolized by EF rating).`
   };
 
