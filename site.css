@@ -237,6 +237,55 @@ html,body{
 .instructions-popup li{ margin-bottom:.42rem }
 @keyframes fadeIn{ from{ opacity:0; transform:translateY(8px) } to{ opacity:1; transform:translateY(0) } }
 
+/* Centroids info popup */
+.info-popup {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  width: 340px;
+  background: #111;                 /* true dark */
+  color: #e5e5e5;
+  border: 1px solid #2e2e2e;
+  border-radius: 10px;
+  box-shadow: 0 8px 26px rgba(0,0,0,.5);
+  padding: 12px 14px;
+  font-size: .92rem;
+  line-height: 1.45;
+  z-index: 60;
+  display: none;
+  animation: fadeIn .25s ease;
+}
+
+.info-popup.show { display: block; }
+
+.info-popup .hdr {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:.5rem;
+  margin-bottom:.35rem;
+}
+.info-popup .hdr h3 {
+  margin:0;
+  font-size:1rem;
+  font-weight:700;
+}
+.info-popup .close {
+  background:transparent;
+  border:none;
+  color:#e5e5e5;
+  font-size:1.15rem;
+  cursor:pointer;
+  line-height:1;
+}
+
+.info-popup ul {
+  margin:.35rem 0 0 1rem;
+  padding:0;
+}
+.info-popup li { margin:.28rem 0; }
+
+
 /* =========================
    STATS GALLERY
    ========================= */
@@ -309,6 +358,7 @@ html,body{
 .stat-desc .takeaway{ margin:.5rem 0 0; color:var(--muted) }
 .stat-desc .bullets{ margin:.5rem 0; padding-left:1.1rem }
 .center-title{ text-align:center }
+
 
 
 
