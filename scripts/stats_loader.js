@@ -74,9 +74,9 @@ window.App = window.App || {};
       '<li><strong>Rising counts:</strong> total tornado reports increased from <strong>4,600</strong> in the 1950s to over <strong>12,000</strong> in the 2000s, largely due to better detection and reporting coverage.</li>',
       '<li><strong>Weaker intensity:</strong> the share of strong (EF≥3) tornadoes dropped from about <strong>45%</strong> in the 1950s to just <strong>12%</strong> by the 2020s, a clear long-term decline in relative strength.</li>',
       '<li><strong>Casualty shift:</strong> combined deaths and injuries peaked in the <strong>1960s–1970s</strong> (17,000–19,000 total) and have fallen sharply since, reflecting better warning systems and building standards.</li>',
-      '<li><strong>Track length:</strong> storms in earlier decades were generally longer-lived — averaging <strong>10–12 miles</strong> — compared to 2–4 miles in most recent decades.</li>',
+      '<li><strong>Track length:</strong> storms in earlier decades were generally longer-lived, averaging <strong>10–12 miles</strong>, compared to 2–4 miles in most recent decades.</li>',
       '<li><strong>Path area:</strong> average track footprints have become smaller overall, but with occasional large outliers (e.g., 2011 Joplin, 2013 Moore), causing modern “short but wide” signatures.</li>',
-      '<li><strong>Recent moderation:</strong> the 2010s and 2020s show fewer total tornadoes than the 2000s but still significant impacts — a balance of more frequent minor events and fewer catastrophic outbreaks.</li>',
+      '<li><strong>Recent moderation:</strong> the 2010s and 2020s show fewer total tornadoes than the 2000s but still significant impacts - a balance of more frequent minor events and fewer catastrophic outbreaks.</li>',
       '</ul>',
       '<strong>Overall:</strong> tornadoes have become more common in the record but generally weaker and less deadly,',
       ' the data reflects improved detection, changing environments, and population growth near impact zones - painting a story of evolving risk rather than simple decline.',
@@ -93,11 +93,11 @@ window.App = window.App || {};
       '<ul class="bullets">',
       '<li><strong>Plains:</strong> the most tornado-rich region overall with <strong>26,609 total events</strong>, but only <strong>18.9% strong (EF≥3)</strong>, casualties are relatively lower (<strong>≈21,000 total</strong>), reflecting vast open terrain and long-standing warning infrastructure.</li>',
       '<li><strong>Midwest:</strong> fewer total tornadoes (<strong>18,531</strong>) but a much higher proportion of strong ones (<strong>23.7%</strong>), producing nearly <strong>30,000 casualties</strong>, the Midwest’s dense population and frequent urban proximity elevate the per-storm risk.</li>',
-      '<li><strong>Southeast:</strong> stands out as the most human-impacted region with <strong>43,934 casualties</strong> — over twice the Plains total — including <strong>2,817 deaths</strong> and <strong>41,000+ injuries</strong>, despite fewer tornadoes (<strong>22,274</strong>), it matches the Midwest in intensity share (<strong>23.7%</strong>) and experiences more fatal outcomes due to population density, tree cover, and nocturnal outbreaks.</li>',
+      '<li><strong>Southeast:</strong> stands out as the most human-impacted region with <strong>43,934 casualties</strong> - over twice the Plains total - including <strong>2,817 deaths</strong> and <strong>41,000+ injuries</strong>, despite fewer tornadoes (<strong>22,274</strong>), it matches the Midwest in intensity share (<strong>23.7%</strong>) and experiences more fatal outcomes due to population density, tree cover, and nocturnal outbreaks.</li>',
       '<li><strong>Intensity balance:</strong> while the Plains still dominate in raw tornado numbers, both the Midwest and Southeast show stronger storms relative to total counts, suggesting more severe local impacts per event.</li>',
       '<li><strong>Human exposure:</strong> the Southeast’s high casualty burden demonstrates how geography and demography, rather than storm count alone, now define the most dangerous tornado region in the U.S.</li>',
       '</ul>',
-      '<strong>Overall:</strong> these totals show a clear transition — Tornado Alley’s traditional heart in the Plains remains active,',
+      '<strong>Overall:</strong> these totals show a clear transition: Tornado Alley’s traditional heart in the Plains remains active,',
       ' but the Southeast has become the nation’s most hazardous corridor for human impacts, blending strong storms with vulnerable landscapes and year-round risk.',
       '</div>'
     ].join(''),
@@ -252,3 +252,4 @@ window.App = window.App || {};
     render(startIndex);
   }
 })();
+
