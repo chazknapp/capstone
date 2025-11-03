@@ -1,14 +1,14 @@
 /* =========================
-   GLOBAL THEME (True Dark)
+   THEME: TRUE DARK
    ========================= */
 :root{
-  --bg:#0d0d0d;        /* page background */
-  --text:#e5e5e5;      /* primary text */
-  --muted:#a3a3a3;     /* secondary text */
-  --accent:#f5f5f5;    /* subtle highlight */
-  --panel:#141414;     /* panels, bars, popups */
-  --panel-2:#1a1a1a;   /* cards, drawers */
-  --border:#2a2a2a;    /* hairlines */
+  --bg:#0d0d0d;
+  --text:#e5e5e5;
+  --muted:#a3a3a3;
+  --accent:#f5f5f5;
+  --panel:#141414;
+  --panel-2:#1a1a1a;
+  --border:#2a2a2a;
 }
 
 *{ box-sizing:border-box }
@@ -22,26 +22,29 @@ html,body{
   text-align:left;
 }
 
-/* Alignment utilities */
+/* lock scroll when overlay is showing (toggle on body) */
+.overlay-open{ overflow:hidden }
+
+/* alignment helpers */
 .align-left{ text-align:left !important }
 .align-center{ text-align:center !important }
 
-/* Views */
+/* views */
 .view{ display:none; height:100% }
 .view.active{ display:block }
 
 /* =========================
-   HOME / LANDING
+   LANDING CARD (optional)
    ========================= */
 .home-card{
-  max-width: 880px;
-  margin: 6rem auto;
-  padding: 3rem 2rem;
-  border-radius: 14px;
-  background: var(--panel);
-  border: 1px solid var(--border);
-  box-shadow: 0 12px 40px rgba(0,0,0,.55);
-  text-align: center;
+  max-width:880px;
+  margin:6rem auto;
+  padding:3rem 2rem;
+  border-radius:14px;
+  background:var(--panel);
+  border:1px solid var(--border);
+  box-shadow:0 12px 40px rgba(0,0,0,.55);
+  text-align:center;
 }
 .home-card h1{
   margin:0 0 1rem 0;
@@ -53,8 +56,8 @@ html,body{
 .home-card .intro{
   color:var(--muted);
   font-size:1.05rem;
-  margin: 0 0 2rem 0;
-  text-align: justify;
+  margin:0 0 2rem 0;
+  text-align:justify;
 }
 #home-hero{
   width:100%;
@@ -70,62 +73,53 @@ html,body{
   padding:.85rem 1.4rem;
   font-weight:700;
   cursor:pointer;
-  transition: transform .15s ease, opacity .15s ease;
+  transition:transform .15s ease, opacity .15s ease;
 }
 .btn-primary:hover{ transform:translateY(-1px); opacity:.95 }
 
-
-/* Landing overlay */
+/* =========================
+   FULL-SCREEN INTRO OVERLAY
+   ========================= */
 .overlay{
-  position: fixed; inset: 0;
-  background: rgba(0,0,0,.65);
-  backdrop-filter: blur(4px);
-  display: flex; align-items: center; justify-content: center;
-  z-index: 100;             /* above topbar, drawer, and map */
-  opacity: 1; visibility: visible; pointer-events: auto;
-  transition: opacity .25s ease, visibility .25s ease;
+  position:fixed; inset:0; z-index:100;
+  background:rgba(0,0,0,.55);
+  backdrop-filter:blur(6px);
+  display:flex; align-items:center; justify-content:center;
+  opacity:1; visibility:visible; pointer-events:auto;
+  transition:opacity .25s ease, visibility .25s ease;
 }
 .overlay.hide{
-  opacity: 0; visibility: hidden; pointer-events: none;
+  opacity:0; visibility:hidden; pointer-events:none;
 }
 .overlay-card{
-  width: min(920px, 92vw);
-  background: #111111;
-  color: #e5e5e5;
-  border: 1px solid #2e2e2e;
-  border-radius: 14px;
-  padding: 28px 28px 22px 28px;
-  box-shadow: 0 12px 40px rgba(0,0,0,.55);
-  text-align: left;
+  width:min(920px,92vw);
+  background:#111; color:#e5e5e5;
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:32px 36px 28px 36px;
+  box-shadow:0 12px 40px rgba(0,0,0,.55);
+  text-align:left;
 }
 .overlay-card h1{
-  margin: 0 0 10px 0;
-  font-size: 2.2rem;
-  line-height: 1.2;
-  color: #f5f5f5;
+  margin:0 0 12px 0;
+  font-size:2.3rem; font-weight:700; color:#f5f5f5;
+  text-align:center;
 }
-.overlay-card .overlay-intro{
-  margin: 0 0 18px 0;
-  color: #9ca3af;
-  font-size: 1.02rem;
-  line-height: 1.65;
-  text-align: justify;
+.overlay-intro{
+  margin-bottom:26px;
+  color:#9ca3af; font-size:1.05rem; line-height:1.6;
+  text-align:justify;
 }
+.overlay-btnwrap{ display:flex; justify-content:center }
 .overlay-card .btn-primary{
-  background: #f5f5f5;
-  color: #0d0d0d;
-  border: none;
-  border-radius: 8px;
-  padding: .8rem 1.4rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition: transform .15s ease, filter .15s ease;
+  background:#f5f5f5; color:#0d0d0d; border:none;
+  border-radius:8px; padding:.85rem 1.5rem; font-weight:700;
+  cursor:pointer; transition:transform .15s ease, filter .15s ease;
 }
-.overlay-card .btn-primary:hover{ transform: translateY(-1px); filter: brightness(1.05); }
-
+.overlay-card .btn-primary:hover{ transform:translateY(-1px); filter:brightness(1.05) }
 
 /* =========================
-   TOP BAR (mode tabs, selectors)
+   TOP BAR
    ========================= */
 #topbar{
   position:fixed; top:0; left:0; right:0; height:70px;
@@ -154,7 +148,7 @@ html,body{
 .tool-controls label{ font-size:.9rem; color:var(--muted); white-space:nowrap }
 #decadeB:disabled{ opacity:.4 }
 
-/* Opacity slider (high-contrast for dark) */
+/* opacity slider (high contrast) */
 #opacity{
   width:130px; appearance:none; background:transparent; height:18px; padding:0; margin:0;
 }
@@ -169,69 +163,54 @@ html,body{
 /* =========================
    MAP CANVASES
    ========================= */
-.map{ position:absolute; top:52px; bottom:52px; width:100% }
-.compare{ position:absolute; top:52px; bottom:52px; left:0; right:0 }
-#singleMap{ position:absolute; top:52px; bottom:52px; left:0; right:0 }
+.map{ position:absolute; top:70px; bottom:56px; width:100% }
+.compare{ position:absolute; top:70px; bottom:56px; left:0; right:0 }
+#singleMap{ position:absolute; top:70px; bottom:56px; left:0; right:0 }
 
-/* Force full-screen map containers */
+/* force full-screen map containers */
 .compare, #singleMap{
   position:fixed !important; top:0; left:0; right:0; bottom:0; z-index:0;
 }
-/* Click-safe gutters for bars */
-.compare::before, #singleMap::before{ content:""; position:absolute; top:0; left:0; right:0; height:52px; pointer-events:none }
-.compare::after,  #singleMap::after { content:""; position:absolute; bottom:0; left:0; right:0; height:52px; pointer-events:none }
+/* gutters matching real bar heights so clicks don't pass through */
+.compare::before, #singleMap::before{
+  content:""; position:absolute; top:0; left:0; right:0; height:70px; pointer-events:none;
+}
+.compare::after, #singleMap::after{
+  content:""; position:absolute; bottom:0; left:0; right:0; height:56px; pointer-events:none;
+}
 
-/* Compare inner maps */
+/* inner maps for compare */
 #compare .map, .compare .map{
   position:absolute !important; top:0; left:0; right:0; bottom:0;
   width:100% !important; height:100% !important;
 }
 
-/* Keep swipe handle on top */
+/* keep swipe control above basemap */
 .mapboxgl-compare{ z-index:5 }
 
 /* =========================
    FOOTER NAV
    ========================= */
-#bottombar {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 56px;                 /* slightly taller footer */
-  background: var(--panel);
-  color: var(--text);
-  border-top: 1px solid var(--border);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1.5rem;
-  z-index: 10;
-  font-size: 1.15rem !important;  /* force size */
-  font-weight: 700 !important;    /* force bold */
-  text-transform: none;
-  letter-spacing: 0.4px;
+#bottombar{
+  position:fixed; bottom:0; left:0; right:0; height:56px;
+  background:var(--panel);
+  color:var(--text);
+  border-top:1px solid var(--border);
+  display:flex; align-items:center; justify-content:center;
+  gap:1.5rem; z-index:10;
+  font-size:1.15rem !important;   /* force size */
+  font-weight:700 !important;      /* force bold */
+  letter-spacing:.4px;
 }
-
-#bottombar button {
-  background: transparent;
-  border: none;
-  color: var(--text) !important;  /* force color */
-  font-size: inherit !important;  /* match parent size */
-  font-weight: inherit !important;
-  cursor: pointer;
-  padding: 0.4rem 0.8rem;
-  transition: opacity 0.2s ease;
+#bottombar button{
+  background:transparent; border:none;
+  color:var(--text) !important; font-size:inherit !important; font-weight:inherit !important;
+  cursor:pointer; padding:.4rem .8rem; transition:opacity .2s ease;
 }
-
-#bottombar button:hover {
-  opacity: 0.8;
-  text-decoration: underline;
-}
-
+#bottombar button:hover{ opacity:.85; text-decoration:underline }
 
 /* =========================
-   DRAWER (Stats)
+   DRAWER (Stats, About, Proposal)
    ========================= */
 .drawer{
   position:fixed; left:0; right:0; bottom:-45vh; height:45vh;
@@ -240,7 +219,7 @@ html,body{
   border-top:1px solid var(--border);
   transition:bottom .25s ease; z-index:20;
 }
-.drawer.open{ bottom:52px } /* match footer height */
+.drawer.open{ bottom:56px } /* match footer */
 .drawer-tabs{ display:flex; gap:.5rem; border-bottom:1px solid var(--border); padding:.5rem }
 .drawer-tabs button{
   background:transparent; border:none; padding:.4rem .6rem; cursor:pointer;
@@ -248,22 +227,24 @@ html,body{
 }
 .drawer-tabs button:hover{ color:var(--text) }
 .drawer-tabs button.active{ border-bottom-color:var(--accent); color:var(--text) }
-.drawer .drawer-body{ padding:.75rem; overflow:auto; height:calc(45vh - 72px); overflow-x:auto }
+.drawer .drawer-body{
+  padding:.75rem; overflow:auto; height:calc(45vh - 72px); overflow-x:auto;
+}
 
-/* Panes */
+/* panes */
 .pane{ display:none }
 .pane.active{ display:block }
 
 /* =========================
-   ABOUT & PROPOSAL CONTENT
+   ABOUT + PROPOSAL
    ========================= */
 #aboutPane .about, #proposalPane .about{
-  max-width: 1000px;
-  margin: 10px auto;
-  padding: 10px 24px 16px 24px;
-  color: var(--text);
+  max-width:1000px;
+  margin:10px auto;
+  padding:10px 24px 16px 24px;
+  color:var(--text);
 }
-#aboutPane .about a, #proposalPane .about a{ color: var(--accent) }
+#aboutPane .about a, #proposalPane .about a{ color:var(--accent) }
 
 /* =========================
    INSTRUCTIONS POPUP
@@ -287,95 +268,36 @@ html,body{
 .instructions-popup li{ margin-bottom:.42rem }
 @keyframes fadeIn{ from{ opacity:0; transform:translateY(8px) } to{ opacity:1; transform:translateY(0) } }
 
-/* Centroids info popup */
-.info-popup {
-  position: fixed;
-  bottom: 20px;
-  left: 20px;
-  width: 340px;
-  background: #111;                 /* true dark */
-  color: #e5e5e5;
-  border: 1px solid #2e2e2e;
-  border-radius: 10px;
-  box-shadow: 0 8px 26px rgba(0,0,0,.5);
-  padding: 12px 14px;
-  font-size: .92rem;
-  line-height: 1.45;
-  z-index: 60;
-  display: none;
-  animation: fadeIn .25s ease;
-}
-
-.info-popup.show { display: block; }
-
-.info-popup .hdr {
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:.5rem;
-  margin-bottom:.35rem;
-}
-.info-popup .hdr h3 {
-  margin:0;
-  font-size:1rem;
-  font-weight:700;
-}
-.info-popup .close {
-  background:transparent;
-  border:none;
-  color:#e5e5e5;
-  font-size:1.15rem;
-  cursor:pointer;
-  line-height:1;
-}
-
-.info-popup ul {
-  margin:.35rem 0 0 1rem;
-  padding:0;
-}
-.info-popup li { margin:.28rem 0; }
-
-/* Full-screen dark translucent overlay */
-.overlay{
-  position:fixed; inset:0; z-index:40;
-  background:rgba(0,0,0,.55);
-  backdrop-filter: blur(6px);
-  display:flex; align-items:center; justify-content:center;
-}
-
-/* Card in the middle */
-.overlay-card{
-  width:min(920px,92vw);
+/* =========================
+   CENTROIDS INFO POPUP
+   matches site.js: .info-header + .info-close
+   ========================= */
+.info-popup{
+  position:fixed; bottom:20px; left:20px; width:340px;
   background:#111; color:#e5e5e5;
-  border:1px solid #2e2e2e; border-radius:14px;
-  padding:32px 36px 28px 36px;
-  box-shadow:0 12px 40px rgba(0,0,0,.55);
-  text-align:left;
+  border:1px solid var(--border);
+  border-radius:10px; box-shadow:0 8px 26px rgba(0,0,0,.5);
+  padding:12px 14px; font-size:.92rem; line-height:1.45; z-index:60;
+  display:none; animation:fadeIn .25s ease;
 }
-
-.overlay-card h1{
-  margin:0 0 12px 0;
-  font-size:2.3rem; font-weight:700; color:#f5f5f5;
+.info-popup.show{ display:block }
+.info-popup .info-header{
+  display:flex; align-items:center; justify-content:space-between;
+  gap:.5rem; margin-bottom:.35rem;
 }
-
-.overlay-intro{
-  margin-bottom:26px;
-  color:#9ca3af; font-size:1.05rem; line-height:1.6;
-  text-align:justify;
+.info-popup .info-header h3{
+  margin:0; font-size:1rem; font-weight:700;
 }
-
-.overlay-btnwrap{ display:flex; justify-content:center }
-.overlay-card .btn-primary{
-  background:#f5f5f5; color:#0d0d0d; border:none;
-  border-radius:8px; padding:.85rem 1.5rem; font-weight:700;
-  cursor:pointer; transition:transform .15s ease, filter .15s ease;
+.info-popup .info-close{
+  background:transparent; border:none; color:#e5e5e5;
+  font-size:1.15rem; cursor:pointer; line-height:1;
 }
-.overlay-card .btn-primary:hover{ transform:translateY(-1px); filter:brightness(1.05) }
+.info-popup ul{ margin:.35rem 0 0 1rem; padding:0 }
+.info-popup li{ margin:.28rem 0 }
 
 /* =========================
-   STATS GALLERY
+   STATS GALLERY (3 x 2 grid)
    ========================= */
-/* Centered gallery, 3 columns x 2 rows */
 .cards.centered{ max-width:1200px; margin:0 auto; padding:0 .75rem }
 .cards.six{
   display:grid;
@@ -384,19 +306,15 @@ html,body{
   align-items:start;
   justify-items:center;
 }
-
-/* Card + thumb */
 .card{
   width:100%; max-width:360px;
   background:var(--panel-2);
   color:var(--text);
   border:1px solid var(--border);
   border-radius:8px;
-  padding:.5rem;
-  cursor:pointer;
-  min-height:100px;
+  padding:.5rem; cursor:pointer; min-height:100px;
   display:flex; flex-direction:column; align-items:center; justify-content:flex-start;
-  transition: background .15s ease;
+  transition:background .15s ease;
 }
 .card:hover{ background:#202020 }
 .card .thumb{
@@ -414,7 +332,12 @@ html,body{
    LIGHTBOX
    ========================= */
 .lb-wrap{ position:fixed; inset:0; background:rgba(0,0,0,.6); z-index:30; display:flex; align-items:center; justify-content:center }
-.lb-body{ background:#101010; color:var(--text); border:1px solid var(--border); border-radius:12px; max-width:95vw; max-height:90vh; padding:10px; overflow:auto; box-shadow:0 16px 44px rgba(0,0,0,.6) }
+.lb-body{
+  background:#101010; color:var(--text);
+  border:1px solid var(--border); border-radius:12px;
+  max-width:95vw; max-height:90vh; padding:10px; overflow:auto;
+  box-shadow:0 16px 44px rgba(0,0,0,.6)
+}
 .lb-header{ display:flex; justify-content:space-between; align-items:center; margin-bottom:8px }
 .lb-header .lb-back, .lb-header .lb-close{
   background:#2a2a2a; color:#fff; border:none; border-radius:6px; padding:.38rem .6rem; cursor:pointer;
@@ -437,15 +360,13 @@ html,body{
 .lb-thumb.active{ outline:2px solid var(--accent); opacity:1 }
 
 /* =========================
-   STAT DESCRIPTION STYLES
+   STAT DESCRIPTION TEXT
    ========================= */
 .stat-desc{ text-align:left; color:var(--text) }
 .stat-desc .desc-title{ margin:.25rem 0 .5rem; font-weight:800 }
 .stat-desc .takeaway{ margin:.5rem 0 0; color:var(--muted) }
 .stat-desc .bullets{ margin:.5rem 0; padding-left:1.1rem }
 .center-title{ text-align:center }
-
-
 
 
 
