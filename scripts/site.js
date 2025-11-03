@@ -37,38 +37,54 @@
 
   /* ------------------------ Map controls ------------------------ */
   function wireControls() {
-    $('opacity')?.addEventListener('input', e =>
-      window.EsriApp?.setOpacityForActive(parseFloat(e.target.value)));
-
-    $('decadeA')?.addEventListener('change', e =>
-      window.EsriApp?.setDecadeA(e.target.value));
-
-    $('decadeB')?.addEventListener('change', e =>
-      window.EsriApp?.setDecadeB(e.target.value));
-
+    // Opacity slider — controls transparency of the active layer
+    $('opacity')?.addEventListener('input', e => {
+      const value = parseFloat(e.target.value);
+      window.EsriApp?.setOpacityForActive(value);
+    });
+  
+    // Decade A (main map) selector
+    $('decadeA')?.addEventListener('change', e => {
+      window.EsriApp?.setDecadeA(e.target.value);
+    });
+  
+    // Decade B (swipe comparison) selector
+    $('decadeB')?.addEventListener('change', e => {
+      window.EsriApp?.setDecadeB(e.target.value);
+    });
+  
+    // Swipe toggle logic — enables or disables Decade B selector
     const chkSwipe = $('chkSwipe');
     const decadeB = $('decadeB');
     chkSwipe?.addEventListener('change', () => {
       if (chkSwipe.checked) {
-        decadeB.disabled = false;
+        decadeB.disabled = false; // enable B selector
       } else {
-        decadeB.value = '';
+        decadeB.value = '';        // reset and disable
         decadeB.disabled = true;
         window.EsriApp?.setDecadeB('');
       }
       window.EsriApp?.refreshSwipe();
     });
-
-    $('chkCentroids')?.addEventListener('change', e =>
-      window.EsriApp?.enableCentroids(e.target.checked));
-
-    $('chkCentroidPath')?.addEventListener('change', e =>
-      window.EsriApp?.enablePath(e.target.checked));
-
+  
+    // Centroids toggle — turns layer on/off and shows info popup
+    $('chkCentroids')?.addEventListener('change', e => {
+      const on = e.target.checked;
+      window.EsriApp?.enableCentroids(on);
+      if (on) showCentroidsPopup();
+    });
+  
+    // Centroid Path toggle (legacy)
+    $('chkCentroidPath')?.addEventListener('change', e => {
+      window.EsriApp?.enablePath(e.target.checked);
+    });
+  
+    // Clear button — resets map to basemap only
     $('btnClear')?.addEventListener('click', () => {
       window.EsriApp?.clearToBasemap?.();
     });
   }
+
 
   /* ------------------------ Drawer: Stats | About | Proposal ------------------------ */
   function wireDrawer() {
