@@ -74,6 +74,56 @@ html,body{
 }
 .btn-primary:hover{ transform:translateY(-1px); opacity:.95 }
 
+
+/* Landing overlay */
+.overlay{
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,.65);
+  backdrop-filter: blur(4px);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 100;             /* above topbar, drawer, and map */
+  opacity: 1; visibility: visible; pointer-events: auto;
+  transition: opacity .25s ease, visibility .25s ease;
+}
+.overlay.hide{
+  opacity: 0; visibility: hidden; pointer-events: none;
+}
+.overlay-card{
+  width: min(920px, 92vw);
+  background: #111111;
+  color: #e5e5e5;
+  border: 1px solid #2e2e2e;
+  border-radius: 14px;
+  padding: 28px 28px 22px 28px;
+  box-shadow: 0 12px 40px rgba(0,0,0,.55);
+  text-align: left;
+}
+.overlay-card h1{
+  margin: 0 0 10px 0;
+  font-size: 2.2rem;
+  line-height: 1.2;
+  color: #f5f5f5;
+}
+.overlay-card .overlay-intro{
+  margin: 0 0 18px 0;
+  color: #9ca3af;
+  font-size: 1.02rem;
+  line-height: 1.65;
+  text-align: justify;
+}
+.overlay-card .btn-primary{
+  background: #f5f5f5;
+  color: #0d0d0d;
+  border: none;
+  border-radius: 8px;
+  padding: .8rem 1.4rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform .15s ease, filter .15s ease;
+}
+.overlay-card .btn-primary:hover{ transform: translateY(-1px); filter: brightness(1.05); }
+
+
 /* =========================
    TOP BAR (mode tabs, selectors)
    ========================= */
@@ -358,6 +408,7 @@ html,body{
 .stat-desc .takeaway{ margin:.5rem 0 0; color:var(--muted) }
 .stat-desc .bullets{ margin:.5rem 0; padding-left:1.1rem }
 .center-title{ text-align:center }
+
 
 
 
