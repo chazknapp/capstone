@@ -111,6 +111,62 @@ html,body{
 .pane{ display:none }
 .pane.active{ display:block }
 
+.instructions-popup {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  width: 320px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  padding: 0.75rem 1rem;
+  font-size: 0.9rem;
+  color: #111;
+  line-height: 1.4;
+  z-index: 50;
+  display: none;
+  animation: fadeIn 0.4s ease;
+}
+
+.instructions-popup.show {
+  display: block;
+}
+
+.instructions-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.instructions-header h3 {
+  font-size: 1rem;
+  margin: 0;
+}
+
+.close-btn {
+  background: transparent;
+  border: none;
+  font-size: 1.25rem;
+  cursor: pointer;
+  color: #333;
+}
+
+.instructions-popup ul {
+  padding-left: 1.2rem;
+  margin: 0;
+}
+
+.instructions-popup li {
+  margin-bottom: 0.4rem;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(10px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
 /* Card grid, single row of 8 in Stats */
 .cards{ display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:.75rem 1rem; align-items:start }
 .cards.one-line{
@@ -213,6 +269,7 @@ html,body{
 
 /* If you want a centered header inside any description, add this class to the element */
 .center-title{ text-align:center }
+
 
 
 
