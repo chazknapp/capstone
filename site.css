@@ -78,7 +78,7 @@ html,body{
    TOP BAR (mode tabs, selectors)
    ========================= */
 #topbar{
-  position:fixed; top:0; left:0; right:0; height:52px;
+  position:fixed; top:0; left:0; right:0; height:70px;
   background:var(--panel);
   color:var(--text);
   border-bottom:1px solid var(--border);
@@ -144,7 +144,7 @@ html,body{
    FOOTER NAV
    ========================= */
 #bottombar{
-  position:fixed; bottom:0; left:0; right:0; height:52px;
+  position:fixed; bottom:0; left:0; right:0; height:80px;
   background:var(--panel);
   color:var(--text);
   border-top:1px solid var(--border);
@@ -286,6 +286,7 @@ html,body{
 .stat-desc .takeaway{ margin:.5rem 0 0; color:var(--muted) }
 .stat-desc .bullets{ margin:.5rem 0; padding-left:1.1rem }
 .center-title{ text-align:center }
+
 
 
 
