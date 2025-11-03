@@ -9,39 +9,30 @@
   <link rel="stylesheet" href="https://js.arcgis.com/4.29/esri/themes/light/main.css" />
   <script src="https://js.arcgis.com/4.29/"></script>
 
-  <!-- Your site styles -->
+  <!-- Site styles (true dark) -->
   <link rel="stylesheet" href="site.css" />
-  <style>
-    /* Tabs left, controls right */
-    #topbar{ display:flex; align-items:center; gap:.75rem; justify-content:space-between }
-    .mode-tabs{ display:flex; gap:.5rem }
-    .global-controls{ display:flex; align-items:center; gap:.6rem; margin-left:auto }
-    .global-controls label{ font-size:.9rem; white-space:nowrap }
-    .global-controls input[type="range"]{ width:140px }
-    #decadeB:disabled { opacity:0.5 }
-  </style>
 </head>
 <body>
 
+  <!-- Welcome overlay sits OVER the active site -->
   <div id="welcomeOverlay" class="overlay" aria-modal="true" role="dialog" aria-labelledby="welcomeTitle">
-  <div class="overlay-card">
-    <h1 id="welcomeTitle">Tornado Alley Shifting East</h1>
-    <p class="overlay-intro">
-      This site presents an interactive map that traces seventy five years of tornado history across the United States.
-      Using NOAA storm data, it visualizes how tornado density, distribution, and intensity have changed through time,
-      revealing an eastward shift from the Great Plains toward the Southeast. Explore the data through kernel density
-      surfaces, tessellation grids, and symbolized point maps, each designed to show a different dimension of America’s
-      changing storm landscape.
-    </p>
-    <div class="overlay-btnwrap">
-      <button id="btnExploreOverlay" class="btn-primary" aria-label="Enter the site">Explore</button>
+    <div class="overlay-card">
+      <h1 id="welcomeTitle" class="align-center">Tornado Alley Shifting East</h1>
+      <p class="overlay-intro">
+        This site presents an interactive map that traces seventy five years of tornado history across the United States.
+        Using NOAA storm data, it visualizes how tornado density, distribution, and intensity have changed through time,
+        revealing an eastward shift from the Great Plains toward the Southeast. Explore the data through kernel density
+        surfaces, tessellation grids, and symbolized point maps, each designed to show a different dimension of America’s
+        changing storm landscape.
+      </p>
+      <div class="overlay-btnwrap">
+        <button id="btnExploreOverlay" class="btn-primary" aria-label="Enter the site">Explore</button>
+      </div>
     </div>
   </div>
-</div>
 
-
-  <!-- Map View -->
-  <section id="mapview" class="view">
+  <!-- Map View (ACTIVE so it runs behind the overlay) -->
+  <section id="mapview" class="view active">
     <!-- Header -->
     <header id="topbar">
       <!-- LEFT: map modes -->
@@ -72,7 +63,6 @@
         <label><input id="chkCentroids" type="checkbox"> Centroids</label>
       </div>
     </header>
-
 
     <!-- Map Containers -->
     <div id="compare" class="compare" style="display:none">
@@ -116,7 +106,7 @@
                  data-caption="Casualties Over Time"
                  data-key="casualties"></div>
         
-            <!-- 3 tables (bottom row) — now with real thumbnails -->
+            <!-- 3 tables (bottom row) — with PNG thumbnails -->
             <div class="card" data-type="table"
                  data-src="stats/tables/decade_summary.html"
                  data-thumb="stats/tables/decade_summary.png"
@@ -137,7 +127,6 @@
           </div>
         </div>
 
-    
         <!-- ABOUT -->
         <div id="aboutPane" class="pane">
           <article class="about align-left">
@@ -179,7 +168,7 @@
               Understanding how these factors interact is critical to reducing future risk.
             </p>
         
-            <hr style="margin: 1.25rem 0; border: none; border-top: 1px solid #e5e7eb;" />
+            <hr style="margin: 1.25rem 0; border: none; border-top: 1px solid #2a2a2a;" />
         
             <h3>How to Use This Site</h3>
             <ul>
@@ -199,8 +188,6 @@
           </article>
         </div>
 
-
-    
         <!-- PROPOSAL -->
         <div id="proposalPane" class="pane">
           <article class="about">
@@ -347,95 +334,49 @@
             </ul>
           </article>
         </div>
+      </div>
 
+      <!-- Close button INSIDE the drawer -->
+      <button id="drawerClose" class="drawer-close" title="Close">×</button>
+    </section>
+  </section>
 
-
-
-
-  <button id="drawerClose" class="drawer-close">×</button>
-</section>
-
-    <!-- Popup instructions -->
-<div id="instructionsPopup" class="instructions-popup">
-  <div class="instructions-header">
-    <h3>How to Use This Site</h3>
-    <button id="closeInstructions" class="close-btn">×</button>
+  <!-- Popup instructions -->
+  <div id="instructionsPopup" class="instructions-popup" role="dialog" aria-labelledby="instructionsTitle">
+    <div class="instructions-header">
+      <h3 id="instructionsTitle">How to Use This Site</h3>
+      <button id="closeInstructions" class="close-btn" aria-label="Close instructions">×</button>
+    </div>
+    <ul>
+      <li><strong>KDE (Kernel Density Estimation)</strong> – View heatmap-style surfaces showing where tornadoes were most concentrated in each decade.</li>
+      <li><strong>Tessellation</strong> – Explore hexagonal grids that summarize tornado counts within equal-area cells for regional comparison. Each cell is color-coded by EF Scale, representing the relative strength of the tornadoes it contains.</li>
+      <li><strong>Points</strong> – Visualize individual tornado locations by decade to understand spread and clustering patterns.</li>
+      <li><strong>Decade Selectors (A and B)</strong> – Choose two decades to compare, and enable “Swipe” to view them interactively side-by-side.</li>
+      <li><strong>Opacity Slider</strong> – Adjust layer transparency for clearer basemap comparison.</li>
+      <li><strong>Centroids</strong> – Toggle to trace the eastward movement of tornado activity through time.</li>
+      <li><strong>Stats Drawer</strong> – Click “Stats” to view charts and tables summarizing key results and regression findings.</li>
+      <li><strong>Proposal</strong> – Read the full research documentation, including methodology, findings, and cited references.</li>
+    </ul>
   </div>
-  <ul>
-    <li><strong>KDE (Kernel Density Estimation)</strong> – View heatmap-style surfaces showing where tornadoes were most concentrated in each decade.</li>
-    <li><strong>Tessellation</strong> – Explore hexagonal grids that summarize tornado counts within equal-area cells for regional comparison. Each cell is color-coded by EF Scale, representing the relative strength of the tornadoes it contains.</li>
-    <li><strong>Points</strong> – Visualize individual tornado locations by decade to understand spread and clustering patterns.</li>
-    <li><strong>Decade Selectors (A and B)</strong> – Choose two decades to compare, and enable “Swipe” to view them interactively side-by-side.</li>
-    <li><strong>Opacity Slider</strong> – Adjust layer transparency for clearer basemap comparison.</li>
-    <li><strong>Centroids</strong> – Toggle to trace the eastward movement of tornado activity through time.</li>
-    <li><strong>Stats Drawer</strong> – Click “Stats” to view charts and tables summarizing key results and regression findings.</li>
-    <li><strong>Proposal</strong> – Read the full research documentation, including methodology, findings, and cited references.</li>
-  </ul>
-</div>
 
-<script>
-  // Show popup on first load
-  window.addEventListener('load', () => {
-    const popup = document.getElementById('instructionsPopup');
-    const closeBtn = document.getElementById('closeInstructions');
-    popup.classList.add('show');
-    closeBtn.addEventListener('click', () => popup.classList.remove('show'));
-  });
-</script>
-
-
-
-  <!-- Scripts -->
-  <script src="scripts/site.js"></script>
-  <script src="scripts/app_esri_only.js"></script>
-  <script src="scripts/stats_loader.js"></script>
-
-  <!-- Fallback: Explore button -->
   <script>
-    document.getElementById('btnExplore')?.addEventListener('click', async () => {
-      try {
-        document.getElementById('home').classList.remove('active');
-        document.getElementById('mapview').classList.add('active');
-        if (window.EsriApp?.init) await window.EsriApp.init();
-      } catch (e) {
-        console.error('Explore failed:', e);
-        alert('Map failed to start: ' + (e?.message || e));
-      }
-    });
-
-    // Disable Decade B unless swipe is checked
-    const chkSwipe = document.getElementById('chkSwipe');
-    const decadeB = document.getElementById('decadeB');
-    chkSwipe?.addEventListener('change', () => {
-      if (chkSwipe.checked) {
-        decadeB.disabled = false;
-      } else {
-        decadeB.value = "";
-        decadeB.disabled = true;
-        if (window.EsriApp?.setDecadeB) window.EsriApp.setDecadeB(""); // clears B layer
+    // Show instructions popup on first load
+    window.addEventListener('load', () => {
+      const popup = document.getElementById('instructionsPopup');
+      const closeBtn = document.getElementById('closeInstructions');
+      if (popup) {
+        popup.classList.add('show');
+        closeBtn?.addEventListener('click', () => popup.classList.remove('show'));
       }
     });
   </script>
+
+  <!-- Scripts (order matters) -->
+  <script src="scripts/site.js"></script>
+  <script src="scripts/app_esri_only.js"></script>
+  <script src="scripts/stats_loader.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
