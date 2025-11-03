@@ -1,20 +1,21 @@
 :root {
-  --bg: #0b1120;         /* deep navy blue background */
-  --text: #e2e8f0;       /* light gray text */
-  --muted: #94a3b8;      /* softer blue-gray text */
-  --accent: #60a5fa;     /* ocean blue highlight */
-  --panel: #1e293b;      /* panel color for cards */
-  --border: #334155;     /* border tone */
+  --bg: #0d0d0d;          /* pure black-gray background */
+  --text: #e5e5e5;        /* bright neutral text */
+  --muted: #9ca3af;       /* soft gray for secondary text */
+  --accent: #f1f1f1;      /* white highlight for hover and buttons */
+  --panel: #1a1a1a;       /* dark panels for drawer + footer */
+  --border: #2e2e2e;      /* subtle gray border lines */
 }
+
 
 html, body {
   height: 100%;
   margin: 0;
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Helvetica, Arial, sans-serif;
-  background: linear-gradient(180deg, #0b1120 0%, #0f172a 100%);  /* subtle ocean-dark gradient */
+  background: linear-gradient(180deg, #0d0d0d 0%, #1a1a1a 100%);
   color: var(--text);
-  text-align:left;                 /* default alignment = LEFT */
-  line-height:1.5;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Helvetica, Arial, sans-serif;
+  text-align: left;
+  line-height: 1.6;
 }
 
 /* Alignment utilities */
@@ -30,21 +31,18 @@ html, body {
   max-width: 850px;
   margin: 6rem auto;
   padding: 3rem 2rem;
-  border-radius: 12px;
-  background: rgba(30, 41, 59, 0.8);  /* dark translucent navy */
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+  border-radius: 14px;
+  background: #111111;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.6);
   text-align: center;
-  line-height: 1.7;
   color: var(--text);
-  backdrop-filter: blur(6px);
 }
 
 .home-card h1 {
   font-size: 2.6rem;
   font-weight: 700;
-  color: var(--accent);
+  color: #f5f5f5;
   margin-bottom: 1.2rem;
-  text-shadow: 0 0 10px rgba(96, 165, 250, 0.3);
 }
 
 .home-card .intro {
@@ -52,7 +50,6 @@ html, body {
   color: var(--muted);
   margin-bottom: 2rem;
   text-align: justify;
-  text-justify: inter-word;
 }
 
 #home-hero {
@@ -63,8 +60,8 @@ html, body {
 }
 
 .btn-primary {
-  background: var(--accent);
-  color: #0b1120;
+  background: #f5f5f5;
+  color: #0d0d0d;
   border: none;
   border-radius: 8px;
   padding: 0.8rem 1.4rem;
@@ -74,7 +71,7 @@ html, body {
 }
 
 .btn-primary:hover {
-  background: #93c5fd;
+  background: #ffffff;
   transform: scale(1.05);
 }
 
@@ -85,13 +82,29 @@ html, body {
 
 
 #topbar, #bottombar, .drawer {
-  background: #0f172a;
+  background: var(--panel);
   color: var(--text);
   border-color: var(--border);
 }
 
 .mode-tabs .tab.active {
   border-bottom-color: var(--accent);
+}
+
+.mode-tabs .tab {
+  color: var(--muted);
+}
+
+.mode-tabs .tab:hover {
+  color: var(--text);
+}
+
+#bottombar {
+  height: 48px;                  /* make footer larger */
+  font-size: 0.95rem;
+  justify-content: center;
+  background: #111;
+  border-top: 1px solid var(--border);
 }
 
 /* Top bar */
@@ -356,6 +369,7 @@ html, body {
 
 /* If you want a centered header inside any description, add this class to the element */
 .center-title{ text-align:center }
+
 
 
 
