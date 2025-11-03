@@ -152,25 +152,30 @@
     });
   }
 
-  // Boot
-  document.addEventListener('DOMContentLoaded', () => {
-    populateDecadeSelects();
-    wireTabs();
-    wireControls();
-    wireDrawer();
-  
-    const chkCentroids = $('chkCentroids'); if (chkCentroids) chkCentroids.checked = false;
-    const chkPath = $('chkCentroidPath'); if (chkPath) chkPath.checked = false;
-    const chkSwipe = $('chkSwipe'); if (chkSwipe) chkSwipe.checked = false;
-    const decadeB = $('decadeB'); if (decadeB) { decadeB.value = ''; decadeB.disabled = true; }
-  
-    // Landing overlay enter
-    const overlay = $('welcomeOverlay');
-    $('btnExplore')?.addEventListener('click', async () => {
-      overlay?.classList.add('hide');
-      // ensure the mapview is visible if you gate it by views
-      document.getElementById('home')?.classList.remove('active');
-      document.getElementById('mapview')?.classList.add('active');
-      await window.EsriApp?.init?.();
-    });
+  // scripts/site.js (boot section)
+document.addEventListener('DOMContentLoaded', async () => {
+  populateDecadeSelects();
+  wireTabs();
+  wireControls();
+  wireDrawer();
+
+  // reset toggles
+  const chkCentroids = $('chkCentroids'); if (chkCentroids) chkCentroids.checked = false;
+  const chkPath = $('chkCentroidPath'); if (chkPath) chkPath.checked = false;
+  const chkSwipe = $('chkSwipe'); if (chkSwipe) chkSwipe.checked = false;
+  const decadeB = $('decadeB'); if (decadeB) { decadeB.value = ''; decadeB.disabled = true; }
+
+  // Initialize the map behind the overlay
+  if (window.EsriApp?.init) await window.EsriApp.init();
+
+  // Show overlay only once per session
+  const overlay = $('welcomeOverlay');
+  const seen = sessionStorage.getItem('welcomeSeen') === '1';
+  if (overlay) overlay.style.display = seen ? 'none' : 'flex';
+
+  // Explore button hides overlay
+  $('btnExploreOverlay')?.addEventListener('click', () => {
+    sessionStorage.setItem('welcomeSeen', '1');
+    if (overlay) overlay.style.display = 'none';
   });
+});
