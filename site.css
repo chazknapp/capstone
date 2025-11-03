@@ -28,9 +28,51 @@ html,body{
 .view.active{ display:block }
 
 /* Home */
-.home-card{ max-width:720px; margin:6rem auto 0; padding:0 1rem; text-align:center }
-.home-card h1{ font-size:2.2rem; margin:0 0 .5rem }
-.home-card .intro{ color:var(--muted); margin-bottom:1rem }
+.home-card {
+  max-width: 800px;
+  margin: 5rem auto;
+  padding: 0 2rem;
+  text-align: center;
+  line-height: 1.6;
+}
+
+.home-card h1 {
+  font-size: 2.4rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #111;
+}
+
+.home-card .intro {
+  font-size: 1.05rem;
+  color: #333;
+  margin-bottom: 2rem;
+  text-align: justify;          /* smooth text edges on both sides */
+  text-justify: inter-word;     /* optional – cleaner word spacing */
+}
+
+#home-hero {
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  margin: 1.5rem 0;
+}
+
+.btn-primary {
+  background: #111;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.75rem 1.25rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.btn-primary:hover {
+  background: #333;
+}
+
 #home-hero{ width:100%; border-radius:8px; border:1px solid var(--border); margin:1rem 0 }
 .btn-primary{ background:var(--accent); color:#fff; border:none; border-radius:6px; padding:.75rem 1.1rem; font-weight:600; cursor:pointer }
 
@@ -296,6 +338,7 @@ html,body{
 
 /* If you want a centered header inside any description, add this class to the element */
 .center-title{ text-align:center }
+
 
 
 
