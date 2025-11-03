@@ -369,7 +369,117 @@ html,body{
 .center-title{ text-align:center }
 
 
+/* =========================
+   MOBILE & SMALL TABLETS
+   ========================= */
 
+/* Phones (<= 600px) */
+@media (max-width: 600px) {
+
+  /* Top & bottom bars a bit taller for touch */
+  #topbar { height: 84px; padding: 0 .75rem; grid-template-columns: 1fr; row-gap: .4rem; }
+  #bottombar { height: 64px; font-size: 1.05rem !important; gap: .9rem; padding: 0 .5rem; }
+
+  /* Stack topbar content: tabs first, then controls */
+  .mode-tabs { justify-self: center; order: 1; }
+  .decade-controls { order: 2; justify-self: center; gap: .4rem; }
+  .tool-controls { order: 3; justify-self: center; gap: .5rem; }
+
+  /* Make selects and inputs easier to tap */
+  select, input[type="range"], input[type="checkbox"], button {
+    font-size: 16px; /* prevents iOS zoom */
+  }
+  .decade-controls select { min-width: 140px; padding: .35rem .4rem; }
+
+  /* Map gutters match taller bars */
+  .compare::before, #singleMap::before { height: 84px; }
+  .compare::after,  #singleMap::after  { height: 64px; }
+
+  /* Drawer becomes almost full-screen for readability */
+  .drawer { bottom: -78vh; height: 78vh; }
+  .drawer.open { bottom: 64px; } /* match mobile footer height */
+  .drawer .drawer-body { height: calc(78vh - 72px); }
+
+  /* Stats grid: 1 column on very small screens */
+  .cards.six {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    justify-items: stretch;
+  }
+  .card { max-width: none; }
+  .card .thumb { height: 160px; }
+
+  /* About / Proposal: comfy reading width + padding */
+  #aboutPane .about, #proposalPane .about {
+    max-width: 680px;
+    padding: 8px 16px 18px 16px;
+  }
+
+  /* Lightbox stacks vertically */
+  .lb-content { flex-direction: column; }
+  .lb-content .lb-media, .lb-content .lb-descbox { flex: 1 1 auto; max-height: none; }
+  .lb-content .lb-descbox { margin-top: .5rem; }
+
+  /* Welcome overlay card fits narrow screens and centers the button */
+  .overlay-card {
+    width: 92vw;
+    padding: 22px 18px 18px 18px;
+    text-align: left;
+  }
+  .overlay-intro { text-align: left; }
+  .overlay-btnwrap { justify-content: center; }
+  .overlay-card .btn-primary { width: 100%; }
+
+  /* Instruction / info popups: narrower and higher so they don’t clash with footer */
+  .instructions-popup,
+  .info-popup {
+    left: 12px;
+    right: 12px;
+    width: auto;
+    bottom: 76px; /* above taller footer */
+  }
+
+  /* Filmstrip thumbnails: larger tap targets */
+  .lb-thumb { width: 100px; height: 66px; }
+}
+
+/* Small tablets (601px–900px) */
+@media (min-width: 601px) and (max-width: 900px) {
+
+  #topbar { height: 78px; padding: 0 .9rem; grid-template-columns: 1fr 1fr; }
+  .mode-tabs { justify-self: start; }
+  .decade-controls { justify-self: end; }
+  .tool-controls { grid-column: 1 / -1; justify-self: center; margin-top: .25rem; }
+
+  .compare::before, #singleMap::before { height: 78px; }
+  .drawer.open { bottom: 56px; }
+
+  .cards.six {
+    grid-template-columns: repeat(2, minmax(260px, 1fr));
+    gap: 14px;
+  }
+
+  #aboutPane .about, #proposalPane .about {
+    max-width: 860px;
+    padding: 8px 20px 18px 20px;
+  }
+}
+
+/* Touch devices: increase hit areas slightly */
+@media (hover: none) and (pointer: coarse) {
+  .mode-tabs .tab,
+  .drawer-tabs button,
+  #bottombar button {
+    padding: .6rem .8rem;
+  }
+}
+
+/* Tighten labels on small screens */
+@media (max-width: 420px) {
+  .decade-controls label { font-size: .88rem; }
+  .tool-controls label { font-size: .88rem; }
+  .decade-controls .sep { display: none; } /* save space */
+}
 
 
 
