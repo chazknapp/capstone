@@ -23,6 +23,22 @@
 </head>
 <body>
 
+  <div id="welcomeOverlay" class="overlay" aria-modal="true" role="dialog" aria-labelledby="welcomeTitle">
+  <div class="overlay-card">
+    <h1 id="welcomeTitle">Tornado Alley Shifting East</h1>
+    <p class="overlay-intro">
+      This site presents an interactive map that traces seventy five years of tornado history across the United States.
+      Using NOAA storm data, it visualizes how tornado density, distribution, and intensity have changed through time,
+      revealing an eastward shift from the Great Plains toward the Southeast. Explore the data through kernel density
+      surfaces, tessellation grids, and symbolized point maps, each designed to show a different dimension of America’s
+      changing storm landscape.
+    </p>
+    <div class="overlay-btnwrap">
+      <button id="btnExploreOverlay" class="btn-primary" aria-label="Enter the site">Explore</button>
+    </div>
+  </div>
+</div>
+
 
   <!-- Map View -->
   <section id="mapview" class="view">
@@ -332,21 +348,6 @@
           </article>
         </div>
 
-        <!-- Landing Overlay -->
-<div id="welcomeOverlay" class="overlay" aria-modal="true" role="dialog" aria-labelledby="welcomeTitle">
-  <div class="overlay-card">
-    <h1 id="welcomeTitle">Tornado Alley Shifting East</h1>
-    <p class="overlay-intro">
-      This site presents an interactive map that traces seventy five years of tornado history across the United States.
-      Using NOAA storm data, it visualizes how tornado density, distribution, and intensity have changed through time,
-      revealing an eastward shift from the Great Plains toward the Southeast. Explore the data through kernel density
-      surfaces, tessellation grids, and symbolized point maps, each designed to show a different dimension of America’s
-      changing storm landscape.
-    </p>
-    <button id="btnExplore" class="btn-primary" aria-label="Enter the site">Explore</button>
-  </div>
-</div>
-
 
 
 
@@ -417,6 +418,7 @@
   </script>
 </body>
 </html>
+
 
 
 
