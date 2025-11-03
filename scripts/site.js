@@ -3,7 +3,7 @@
   const decades = ["1950s","1960s","1970s","1980s","1990s","2000s","2010s","2020s"];
   const $ = (id) => document.getElementById(id);
 
-  // --- Centroids help popup
+  /* ------------------------ Centroids help popup ------------------------ */
   function mountCentroidsPopup() {
     if (document.getElementById('centroidsHelp')) return;
     const box = document.createElement('div');
@@ -17,13 +17,13 @@
       <div class="info-body">
         <p>
           Each centroid marks the spatial center of tornado activity for a decade,
-          computed from the first five years of that decade to keep periods comparable,
-          for example 1950 to 1954, 1960 to 1964, through 2020 to 2024.
+          computed from the first five years of that decade to keep periods comparable
+          — for example 1950–1954, 1960–1964, …, 2020–2024.
         </p>
         <ul>
           <li>Dots represent decade centers,</li>
-          <li>Connected dots show the long term path,</li>
-          <li>East to southeast drift visualizes a shifting corridor of activity.</li>
+          <li>Connected dots show the long-term path,</li>
+          <li>East–southeast drift visualizes a shifting corridor of activity.</li>
         </ul>
       </div>`;
     document.body.appendChild(box);
@@ -39,7 +39,7 @@
     box._hideTimer = setTimeout(() => box.classList.remove('show'), 12000);
   }
 
-  // --- Decade selects
+  /* ------------------------ Decade selects ------------------------ */
   function populateDecadeSelects() {
     const add = (id, opts) => {
       const sel = $(id);
@@ -52,12 +52,13 @@
     };
     add('decadeA', decades);
     add('decadeB', decades);
+
     const a = $('decadeA'), b = $('decadeB');
     if (a) a.value = '1950s';
     if (b) { b.value = ''; b.disabled = true; }
   }
 
-  // --- Mode tabs
+  /* ------------------------ Mode tabs ------------------------ */
   function wireTabs() {
     const tabs = document.querySelectorAll('.mode-tabs .tab');
     tabs.forEach(btn => {
@@ -69,7 +70,7 @@
     });
   }
 
-  // --- Map controls
+  /* ------------------------ Map controls ------------------------ */
   function wireControls() {
     $('opacity')?.addEventListener('input', e =>
       window.EsriApp?.setOpacityForActive(parseFloat(e.target.value)));
@@ -107,7 +108,7 @@
     });
   }
 
-  // --- Drawer: Stats | About | Proposal
+  /* ------------------------ Drawer: Stats | About | Proposal ------------------------ */
   function wireDrawer() {
     const drawer = $('drawer');
     const btnStats = $('btnStats');
@@ -152,30 +153,37 @@
     });
   }
 
-  // scripts/site.js (boot section)
-document.addEventListener('DOMContentLoaded', async () => {
-  populateDecadeSelects();
-  wireTabs();
-  wireControls();
-  wireDrawer();
+  /* ------------------------ Boot ------------------------ */
+  document.addEventListener('DOMContentLoaded', async () => {
+    // Always show the welcome overlay (mandatory each visit)
+    const overlay = $('welcomeOverlay');
+    if (overlay) {
+      overlay.style.display = 'flex';
+      document.body.classList.add('overlay-open'); // prevent background scroll
+    }
+    // Make Explore work immediately
+    $('btnExploreOverlay')?.addEventListener('click', () => {
+      if (overlay) overlay.style.display = 'none';
+      document.body.classList.remove('overlay-open');
+    });
 
-  // reset toggles
-  const chkCentroids = $('chkCentroids'); if (chkCentroids) chkCentroids.checked = false;
-  const chkPath = $('chkCentroidPath'); if (chkPath) chkPath.checked = false;
-  const chkSwipe = $('chkSwipe'); if (chkSwipe) chkSwipe.checked = false;
-  const decadeB = $('decadeB'); if (decadeB) { decadeB.value = ''; decadeB.disabled = true; }
+    // Wire UI
+    populateDecadeSelects();
+    wireTabs();
+    wireControls();
+    wireDrawer();
 
-  // Initialize the map behind the overlay
-  if (window.EsriApp?.init) await window.EsriApp.init();
+    // Reset toggles
+    const chkCentroids = $('chkCentroids'); if (chkCentroids) chkCentroids.checked = false;
+    const chkPath = $('chkCentroidPath'); if (chkPath) chkPath.checked = false;
+    const chkSwipe = $('chkSwipe'); if (chkSwipe) chkSwipe.checked = false;
+    const decadeB = $('decadeB'); if (decadeB) { decadeB.value = ''; decadeB.disabled = true; }
 
-  // Show overlay only once per session
-  const overlay = $('welcomeOverlay');
-  const seen = sessionStorage.getItem('welcomeSeen') === '1';
-  if (overlay) overlay.style.display = seen ? 'none' : 'flex';
-
-  // Explore button hides overlay
-  $('btnExploreOverlay')?.addEventListener('click', () => {
-    sessionStorage.setItem('welcomeSeen', '1');
-    if (overlay) overlay.style.display = 'none';
+    // Initialize the map behind the overlay (don't block the Explore button)
+    try {
+      if (window.EsriApp?.init) await window.EsriApp.init();
+    } catch (err) {
+      console.error('Esri init failed:', err);
+    }
   });
-});
+})();
