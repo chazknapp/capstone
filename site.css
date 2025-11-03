@@ -1,20 +1,18 @@
-:root{
-  --bg:#ffffff;
-  --text:#111;
-  --muted:#6b7280;
-  --accent:#111;
-  --panel:#f5f6f7;
-  --border:#e5e7eb;
+:root {
+  --bg: #0b1120;         /* deep navy blue background */
+  --text: #e2e8f0;       /* light gray text */
+  --muted: #94a3b8;      /* softer blue-gray text */
+  --accent: #60a5fa;     /* ocean blue highlight */
+  --panel: #1e293b;      /* panel color for cards */
+  --border: #334155;     /* border tone */
 }
 
-/* Base */
-*{ box-sizing:border-box }
-html,body{
-  height:100%;
-  margin:0;
-  font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Helvetica,Arial,sans-serif;
-  background:var(--bg);
-  color:var(--text);
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Helvetica, Arial, sans-serif;
+  background: linear-gradient(180deg, #0b1120 0%, #0f172a 100%);  /* subtle ocean-dark gradient */
+  color: var(--text);
   text-align:left;                 /* default alignment = LEFT */
   line-height:1.5;
 }
@@ -29,26 +27,32 @@ html,body{
 
 /* Home */
 .home-card {
-  max-width: 800px;
-  margin: 5rem auto;
-  padding: 0 2rem;
+  max-width: 850px;
+  margin: 6rem auto;
+  padding: 3rem 2rem;
+  border-radius: 12px;
+  background: rgba(30, 41, 59, 0.8);  /* dark translucent navy */
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
   text-align: center;
-  line-height: 1.6;
+  line-height: 1.7;
+  color: var(--text);
+  backdrop-filter: blur(6px);
 }
 
 .home-card h1 {
-  font-size: 2.4rem;
+  font-size: 2.6rem;
   font-weight: 700;
-  margin-bottom: 1rem;
-  color: #111;
+  color: var(--accent);
+  margin-bottom: 1.2rem;
+  text-shadow: 0 0 10px rgba(96, 165, 250, 0.3);
 }
 
 .home-card .intro {
   font-size: 1.05rem;
-  color: #333;
+  color: var(--muted);
   margin-bottom: 2rem;
-  text-align: justify;          /* smooth text edges on both sides */
-  text-justify: inter-word;     /* optional – cleaner word spacing */
+  text-align: justify;
+  text-justify: inter-word;
 }
 
 #home-hero {
@@ -59,22 +63,36 @@ html,body{
 }
 
 .btn-primary {
-  background: #111;
-  color: #fff;
+  background: var(--accent);
+  color: #0b1120;
   border: none;
-  border-radius: 6px;
-  padding: 0.75rem 1.25rem;
+  border-radius: 8px;
+  padding: 0.8rem 1.4rem;
   font-weight: 600;
   cursor: pointer;
-  transition: background 0.2s ease;
+  transition: background 0.25s ease, transform 0.2s ease;
 }
 
 .btn-primary:hover {
-  background: #333;
+  background: #93c5fd;
+  transform: scale(1.05);
 }
+
+
 
 #home-hero{ width:100%; border-radius:8px; border:1px solid var(--border); margin:1rem 0 }
 .btn-primary{ background:var(--accent); color:#fff; border:none; border-radius:6px; padding:.75rem 1.1rem; font-weight:600; cursor:pointer }
+
+
+#topbar, #bottombar, .drawer {
+  background: #0f172a;
+  color: var(--text);
+  border-color: var(--border);
+}
+
+.mode-tabs .tab.active {
+  border-bottom-color: var(--accent);
+}
 
 /* Top bar */
 #topbar{
@@ -338,6 +356,7 @@ html,body{
 
 /* If you want a centered header inside any description, add this class to the element */
 .center-title{ text-align:center }
+
 
 
 
