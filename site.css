@@ -143,19 +143,42 @@ html,body{
 /* =========================
    FOOTER NAV
    ========================= */
-#bottombar{
-  position:fixed; bottom:0; left:0; right:0; height:80px;
-  background:var(--panel);
-  color:var(--text);
-  border-top:1px solid var(--border);
-  display:flex; align-items:center; justify-content:center; gap:1rem;
-  z-index:10; font-size:1.5rem; font-weight:900;
+#bottombar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 56px;                 /* slightly taller footer */
+  background: var(--panel);
+  color: var(--text);
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  z-index: 10;
+  font-size: 1.15rem !important;  /* force size */
+  font-weight: 700 !important;    /* force bold */
+  text-transform: none;
+  letter-spacing: 0.4px;
 }
-#bottombar button{
-  background:transparent; border:none; color:var(--text);
-  padding:.4rem .6rem; cursor:pointer;
+
+#bottombar button {
+  background: transparent;
+  border: none;
+  color: var(--text) !important;  /* force color */
+  font-size: inherit !important;  /* match parent size */
+  font-weight: inherit !important;
+  cursor: pointer;
+  padding: 0.4rem 0.8rem;
+  transition: opacity 0.2s ease;
 }
-#bottombar button:hover{ text-decoration:underline }
+
+#bottombar button:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+}
+
 
 /* =========================
    DRAWER (Stats)
@@ -286,6 +309,7 @@ html,body{
 .stat-desc .takeaway{ margin:.5rem 0 0; color:var(--muted) }
 .stat-desc .bullets{ margin:.5rem 0; padding-left:1.1rem }
 .center-title{ text-align:center }
+
 
 
 
